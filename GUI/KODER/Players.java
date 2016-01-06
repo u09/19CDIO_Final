@@ -131,4 +131,8 @@ public class Players {
         }
         while((t1 - t0) < (n));
     }
+
+    public int getNumber(){
+        return 1;
+    }
 }
