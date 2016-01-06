@@ -14,9 +14,11 @@ public class Jail extends Fields {
         GUI.setCar(10,getName());
         jailedPlayers[p.getNumber()]=true;
     }
-    public void inJail(){
+    public void payJail(Players p){
+        jailedPlayers[p.getNumber()]=true;
+        p.remove(1000);
+    }
+    public void NThrow(Players p){
         
     }
-    //
-
 }
