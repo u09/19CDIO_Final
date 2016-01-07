@@ -40,13 +40,35 @@ public class Controller{
     private void StartGame(){
         int[] D;
         int TI=-1;
+        Jail J=(Jail) F.Field[10]; 
         while(true){
             TI++;
             GUI.getUserButtonPressed(this.Lang.get("KT"),"OK");
             
+            if(J.isJailed(turn)){
+                this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
+            }
+            
             if(this.TEST!=0 && new Test().TestDice(TI,TEST)[0]!=0 && new Test().TestDice(TI,TEST)[1]!=0) D=new Test().TestDice(TI,TEST);
             else if(this.TEST!=0 && (new Test().TestDice(TI,TEST)[0]==0 || new Test().TestDice(TI,TEST)[1]==0)) break;
             else D=Dice.Throw();
+            
+            if(J.isJailed(turn)){
+                if(D[0]!=D[1]){
+                    if(J.Nthrows(turn)==3){
+                        J.payJail(totalP[turn]);
+                    }
+                    else{
+                        GUI.showMessage("Du har ikke slået 2 ens");
+                        this.CT();
+                        continue;
+                    }
+                }
+                else{
+                    J.payJail(totalP[turn]);
+                    totalP[turn].add(1000);
+                }
+            }
             
             GUI.setDice(D[0],D[1]);
             totalP[this.turn].move(D[0]+D[1],this.DELAY);
@@ -101,9 +123,9 @@ public class Controller{
             }
             else this.DeadPlayers++;
         }
-        */
+         */
     }
-
+    
     /**
      * Returnerer positionen af den aktuelle spillers position
      * @return 1-22
@@ -111,7 +133,7 @@ public class Controller{
     private int position(){
         return totalP[this.turn].getPosition();
     }
-
+    
     /**
      * Skifter spillerens tur. Spinger dead spillere over
      */
@@ -120,7 +142,7 @@ public class Controller{
         else this.turn++;
         if(this.totalP[turn].dead()) CT();
     }
-
+    
     /**
      * Tilfoejer spillere til boardet (navn,penge,farve,type)
      */
@@ -135,13 +157,13 @@ public class Controller{
             check=true;
             if(i>1){
                 first:
-                for(int t=1;t<=i-1;t++){
-                    if(totalP[t-1].name().equals(name)){
-                        i--;
-                        check=false;
-                        break first;
+                    for(int t=1;t<=i-1;t++){
+                        if(totalP[t-1].name().equals(name)){
+                            i--;
+                            check=false;
+                            break first;
+                        }
                     }
-                }
             }
             if(!check) continue;
             col=GUI.getUserSelection(this.Lang.get("Chose_Color"),this.colors);
@@ -152,7 +174,7 @@ public class Controller{
                     this.Lang.get("T2"),
                     this.Lang.get("T3"),
                     this.Lang.get("T4")),
-                Lang);
+                Lang,i-1);
         }
     }
     
@@ -201,7 +223,7 @@ public class Controller{
             this.players=this.TEST_PLAYERS;
             this.totalP=new Players[this.players];
             
-            for(int i=0;i<=this.players-1;i++) totalP[i]=new Players(str[i][0],str[i][1],str[i][2],Lang);
+            for(int i=0;i<=this.players-1;i++) totalP[i]=new Players(str[i][0],str[i][1],str[i][2],Lang,i);
         }
     }
     

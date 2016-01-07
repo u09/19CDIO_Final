@@ -9,6 +9,7 @@ public class Players {
     private int position;
     private String name;
     private Bank money;
+    private int player;
     
     /**
      * vi opretter konstuktør Players som tager imod type(bil,ufo,racer,traktor) og farven og til sidst sprogpakken
@@ -17,10 +18,11 @@ public class Players {
      * @param type
      * @param Lang
      */
-    public Players(String name,String col,String type,Map<String, String> Lang){
+    public Players(String name,String col,String type,Map<String, String> Lang, int player){
         this.name=name;
         this.position=1;
         this.money=new Bank();
+        this.player=player;
         Color chk=Color.BLACK;
         
         // Brugeren får mulighed for at vælge farve i GUI'en
@@ -58,6 +60,13 @@ public class Players {
      */
     public int getPosition(){
         return this.position;
+    }
+    public void setPosition(int p){
+        this.position=p;
+    }
+    
+    public int getPlayer(){
+        return this.player;
     }
     /**
      * vi opretter metode til at betale fra en spiller til en anden spiller
@@ -118,7 +127,7 @@ public class Players {
             sleep(delay);
         }
     }
-    
+   
     //Metode gør så programmet bliver forsinket en smule
     public void sleep(){
         sleep(1200);
