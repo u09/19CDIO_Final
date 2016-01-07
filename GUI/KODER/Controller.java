@@ -16,7 +16,7 @@ public class Controller{
     private FieldHandler F=new FieldHandler(); // Opretter et nyt objkekt
     private int DELAY=600;
     private String[] colors={Lang.get("F1"),Lang.get("F2"),Lang.get("F3"),Lang.get("F4"),Lang.get("F5"),Lang.get("F6")};
-    private final int TEST=4;
+    private final int TEST=1;
     private final int TEST_PLAYERS=2;
     
     public Controller(){
@@ -28,10 +28,7 @@ public class Controller{
     private void Test(){
         this.DELAY=0;
         Test test=new Test();
-        if(this.TEST==1) test.TestFleet(totalP,turn,F);
-        else if(this.TEST==2) test.TestCaravan(totalP,turn,F);
-        else if(this.TEST==3) {}//TestRent
-        else if(this.TEST==4) {}//TEST
+        if(this.TEST==1) {}//TEST
     }
     
     /**
@@ -59,7 +56,7 @@ public class Controller{
                         J.payJail(totalP[turn]);
                     }
                     else{
-                        GUI.showMessage("Du har ikke slået 2 ens");
+                        GUI.showMessage("Du har ikke slï¿½et 2 ens");
                         this.CT();
                         continue;
                     }
@@ -192,10 +189,10 @@ public class Controller{
     }
     
     /**
-     * Saetter subtexten for GUI'en
+     * SÃ¦tter subtexten for GUI'en
      */
     private void setLang(){
-        for(int i=1;i<=22;i++) GUI.setSubText(i,"");
+        for(int i=1;i<=41;i++) GUI.setSubText(i,"");
     }
     
     /**
@@ -203,7 +200,7 @@ public class Controller{
      */
     private void PreGame(){
         this.Board.createBoard(this.Lang);
-        this.setLang();
+//        this.setLang();
         if(this.TEST==0)
         {
             this.players=Integer.parseInt(GUI.getUserSelection(this.Lang.get("AS2"),"2","3","4","5","6"));

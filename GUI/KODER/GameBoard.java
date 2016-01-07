@@ -14,54 +14,50 @@ public class GameBoard {
         
     }
     //vi opretter en funktion til at oprette felter
-    public void createBoard(Map<String, String> Lang) {
-        
+    public void createBoard(Map<String,String> Lang){
         //felterne bliver sat ind i et array
         ArrayList<Field> list = new ArrayList<Field>();
         //her tilfÃ¸jer vi de enkelte felter,sÃ¦tter baggrunden og titlen  ( op til 22)
-        list.add(new desktop_fields.Start.Builder().setTitle("START").setBgColor(Color.RED).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Hvidovrevej").setBgColor(Color.BLUE).build());
-        list.add(new desktop_fields.Chance.Builder().setBgColor(Color.BLACK).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Rødovrevej").setBgColor(Color.BLUE).build());
+        list.add(new Start.Builder().setTitle("START").setBgColor(Color.RED).build());
+        list.add(new Street.Builder().setTitle("Hvidovrevej").setBgColor(Color.BLUE).build());
+        list.add(new Chance.Builder().setBgColor(Color.BLACK).build());
+        list.add(new Street.Builder().setTitle("rodovervej").setBgColor(Color.BLUE).build());
         list.add(new desktop_fields.Tax.Builder().setTitle("Betal indkomstskat").setBgColor(Color.WHITE).build());
-        list.add(new desktop_fields.Shipping.Builder().setTitle("Scandlines H-H").setBgColor(Color.BLUE).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Roskildevej").setBgColor(Color.ORANGE).build());
-        list.add(new desktop_fields.Chance.Builder().setBgColor(Color.BLACK).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Valby Langgade").setBgColor(Color.ORANGE).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Allegade").setBgColor(Color.ORANGE).build());
-        list.add(new desktop_fields.Jail.Builder().setTitle("På besøg-I fængsel").setBgColor(Color.BLACK).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Frederiksberg Alle").setBgColor(Color.GREEN).build());
-        list.add(new desktop_fields.Brewery.Builder().setTitle("SQUASH").setBgColor(Color.RED).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Bülowsvej").setBgColor(Color.GREEN).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Gl.Kongevej").setBgColor(Color.GREEN).build());
-        list.add(new desktop_fields.Shipping.Builder().setTitle("Mols Linjen").setBgColor(Color.BLUE).build());   
-        list.add(new desktop_fields.Street.Builder().setTitle("Bernstorffsvej").setBgColor(Color.GRAY).build());
-        list.add(new desktop_fields.Chance.Builder().setBgColor(Color.BLACK).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Hellerupvej").setBgColor(Color.GRAY).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Strandvejen").setBgColor(Color.GRAY).build());
-        list.add(new desktop_fields.Empty.Builder().setBgColor(Color.PINK).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Trianglen").setBgColor(Color.RED).build());
-        list.add(new desktop_fields.Chance.Builder().setBgColor(Color.BLACK).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Østerbrogade").setBgColor(Color.RED).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Grønningen").setBgColor(Color.RED).build());
-        list.add(new desktop_fields.Shipping.Builder().setTitle("Scandlines G-R").setBgColor(Color.BLUE).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Bredegade").setBgColor(Color.WHITE).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Kgs. Nytorv").setBgColor(Color.WHITE).build());
-        list.add(new desktop_fields.Brewery.Builder().setTitle("COCA COLA").setBgColor(Color.RED).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Østergade").setBgColor(Color.WHITE).build());
-        list.add(new desktop_fields.Jail.Builder().setTitle("De fængsles").setBgColor(Color.BLACK).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Amagertorv").setBgColor(Color.YELLOW).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Vimmelskaftet").setBgColor(Color.YELLOW).build());
-        list.add(new desktop_fields.Chance.Builder().setBgColor(Color.BLACK).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Nygade").setBgColor(Color.YELLOW).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Scandlines R-P").setBgColor(Color.BLUE).build());
-        list.add(new desktop_fields.Chance.Builder().setBgColor(Color.BLACK).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Frederiksberggade").setBgColor(Color.MAGENTA).build());
+        list.add(new Shipping.Builder().setTitle("Scandlines H-H").setBgColor(Color.BLUE).build());
+        list.add(new Street.Builder().setTitle("Roskildevej").setBgColor(Color.ORANGE).build());
+        list.add(new Chance.Builder().setBgColor(Color.BLACK).build());
+        list.add(new Street.Builder().setTitle("Valby Langgade").setBgColor(Color.ORANGE).build());
+        list.add(new Street.Builder().setTitle("Allegade").setBgColor(Color.ORANGE).build());
+        list.add(new desktop_fields.Jail.Builder().setTitle("Pï¿½ besï¿½g-I fï¿½ngsel").setBgColor(Color.BLACK).build());
+        list.add(new Street.Builder().setTitle("Frederiksberg Alle").setBgColor(Color.GREEN).build());
+        list.add(new Brewery.Builder().setTitle("SQUASH").setBgColor(Color.RED).build());
+        list.add(new Street.Builder().setTitle("Bulowsvej").setBgColor(Color.GREEN).build());
+        list.add(new Street.Builder().setTitle("Gl.Kongevej").setBgColor(Color.GREEN).build());
+        list.add(new Shipping.Builder().setTitle("Mols Linjen").setBgColor(Color.BLUE).build());   
+        list.add(new Street.Builder().setTitle("Bernstorffsvej").setBgColor(Color.GRAY).build());
+        list.add(new Chance.Builder().setBgColor(Color.BLACK).build());
+        list.add(new Street.Builder().setTitle("Hellerupvej").setBgColor(Color.GRAY).build());
+        list.add(new Street.Builder().setTitle("Strandvejen").setBgColor(Color.GRAY).build());
+        list.add(new Empty.Builder().setBgColor(Color.PINK).build());
+        list.add(new Street.Builder().setTitle("Trianglen").setBgColor(Color.RED).build());
+        list.add(new Chance.Builder().setBgColor(Color.BLACK).build());
+        list.add(new Street.Builder().setTitle("Osterbrogade").setBgColor(Color.RED).build());
+        list.add(new Street.Builder().setTitle("Gronningen").setBgColor(Color.RED).build());
+        list.add(new Shipping.Builder().setTitle("Scandlines G-R").setBgColor(Color.BLUE).build());
+        list.add(new Street.Builder().setTitle("Bredegade").setBgColor(Color.WHITE).build());
+        list.add(new Street.Builder().setTitle("Kgs. Nytorv").setBgColor(Color.WHITE).build());
+        list.add(new Brewery.Builder().setTitle("COCA COLA").setBgColor(Color.RED).build());
+        list.add(new Street.Builder().setTitle("Ostergade").setBgColor(Color.WHITE).build());
+        list.add(new desktop_fields.Jail.Builder().setTitle("De fï¿½ngsles").setBgColor(Color.BLACK).build());
+        list.add(new Street.Builder().setTitle("Amagertorv").setBgColor(Color.YELLOW).build());
+        list.add(new Street.Builder().setTitle("Vimmelskaftet").setBgColor(Color.YELLOW).build());
+        list.add(new Chance.Builder().setBgColor(Color.BLACK).build());
+        list.add(new Street.Builder().setTitle("Nygade").setBgColor(Color.YELLOW).build());
+        list.add(new Street.Builder().setTitle("Scandlines R-P").setBgColor(Color.BLUE).build());
+        list.add(new Chance.Builder().setBgColor(Color.BLACK).build());
+        list.add(new Street.Builder().setTitle("Frederiksberggade").setBgColor(Color.MAGENTA).build());
         list.add(new desktop_fields.Tax.Builder().setTitle("SKAT 2000 kr").setBgColor(Color.WHITE).build());
-        list.add(new desktop_fields.Street.Builder().setTitle("Rådhuspladsen").setBgColor(Color.MAGENTA).build());
-        
-       
-        
+        list.add(new Street.Builder().setTitle("Radhuspladsen").setBgColor(Color.MAGENTA).build());
         
         //Vi laver field array og definere lÃ¦ngden af arrayet
         Field[] fields = new Field[list.size()];
@@ -71,4 +67,3 @@ public class GameBoard {
         GUI.create(fields);
     }
 }
-
