@@ -21,7 +21,7 @@ public class Lang {
         Danish.put("BE1",           ". Vil du købe grunden til ");
         Danish.put("AS",            "Fejl: Der skal være minimum 2 og maksimum 6 spiller");
         Danish.put("AS2",           "Indtast antal spillere (2-6)");
-        Danish.put("KT",            "Tryk ok for at kaste med terninger");
+        Danish.put("KT",            "Tryk ok for at kaste med terninger, ");
         Danish.put("Chose_Color",   "Vælg den ønskede farve til din bil");
         Danish.put("F1",            "Blå");
         Danish.put("F2",            "Hvid");

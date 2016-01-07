@@ -25,4 +25,20 @@ public class FieldHandler{
         new Labor_camp("The Pit",2500,100),
         new Territory("Castle",8000,4000),
     };
+
+    public int getNumOwn(Players player){
+        int num=0;
+        Ownable O;
+        for(int i=1;i<=40;i++){
+            if(!(Field[i-1] instanceof Ownable)) continue;
+            O=(Ownable)Field[i-1];
+            if(O.getOwner().name().equals(player.name())) num++;
+        }
+        return num;
+    }
+
+    public String[] getOwn(Players player){
+        
+        return null;
+    }
 }

@@ -118,6 +118,7 @@ public class Players {
             sleep(delay);
         }
     }
+    
     //Metode gør så programmet bliver forsinket en smule
     public void sleep(){
         sleep(1200);
