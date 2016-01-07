@@ -1,9 +1,17 @@
 /GUIClassDiagram.PNG
 /KODER/
+<<<<<<< Updated upstream
 /Tests/
 /desktop_board/
+<<<<<<< HEAD
 /desktop_codebehind/
 /desktop_fields/
 /desktop_resources/
 /desktop_tests/
 /fields.txt
+=======
+/desktop_fields/
+/desktop_tests/
+=======
+>>>>>>> Stashed changes
+>>>>>>> origin/master

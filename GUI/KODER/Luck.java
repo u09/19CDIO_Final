@@ -1,5 +1,17 @@
 package KODER;
+public class Luck extends Fields {
+    
+    public Luck(String name){
+        super(name);
+    }
 
-public class Luck {
+    
+    @Override
+    public void landOnField(Players p) {
+       
+        // TODO Auto-generated method stub
+    
+        
+    }
 
 }
