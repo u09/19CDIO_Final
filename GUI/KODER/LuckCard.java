@@ -6,15 +6,29 @@ public class LuckCard {
     private int         value;  //Vi opretter værdien som vi skal bruge til at rykke frem/tilbage eller betale/modtage beløb osv
     
     
-    public LuckCard ( String cardType, String cardText, int cardValue){
-        type  = cardType;
-        text  = cardText;
-        value = cardValue;
+        public LuckCard ( String cardType, String cardText, int cardValue){
+            type  = cardType;
+            text  = cardText;
+            value = cardValue;
+            
+        }
+    
+    
+    
+    public void useCard(Players p){
+        
+        
+        
+        
+        switch (type) {
+            
+            case"move":
+                
+                
+            
+        }
         
     }
     
-    
-    
-    
-    
 }
+
