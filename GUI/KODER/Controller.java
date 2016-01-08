@@ -56,11 +56,8 @@ public class Controller{
                         J.payJail(totalP[turn]);
                     }
                     else{
-<<<<<<< Updated upstream
                         GUI.showMessage("Du har ikke slået 2 ens");
-=======
                         GUI.showMessage("Du har ikke sl�et 2 ens");
->>>>>>> Stashed changes
                         this.CT();
                         continue;
                     }
@@ -196,11 +193,8 @@ public class Controller{
      * Sætter subtexten for GUI'en
      */
     private void setLang(){
-<<<<<<< Updated upstream
         for(int i=1;i<=41;i++) GUI.setSubText(i,"");
-=======
         for(int i=1;i<=40;i++) GUI.setSubText(i,"");
->>>>>>> Stashed changes
     }
     
     /**

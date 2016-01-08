@@ -18,21 +18,10 @@ public class Labor_camp extends Ownable{
         D.Throw();
         int s = D.sum();
         this.rent=rent;
-<<<<<<< Updated upstream
         FieldHandler f = new FieldHandler();
         Ownable O = (Ownable) f.Field[12];
         Ownable O2 = (Ownable) f.Field[28];
-        if(O.getOwner().name()==O2.getOwner().name()){
-            this.rent = s*rent*2;
-            
-        }
-=======
-        FieldHandler f=new FieldHandler();
-        Dicecup D = new Dicecup();
-        D.Throw();
         int sum = D.sum();
-        Ownable O = (Ownable) f.Field[12];
-        Ownable O2 = (Ownable) f.Field[28];
         if(O.getOwner().name()==O2.getOwner().name()){
             
             this.rent=sum*rent*2;
@@ -61,6 +50,5 @@ public class Labor_camp extends Ownable{
 
     public void landOnField(Players player) {
         
->>>>>>> Stashed changes
     }
 }
