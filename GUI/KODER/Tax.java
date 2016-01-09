@@ -25,7 +25,7 @@ public class Tax extends Fields{ // forlænger klasse med en anden klasse
                         if(O.getOwner().name()==player.name()) EjendomSum+=O.getPrice();
                     }
                 }
-                this.tax=(player.getMoney()+EjendomSum)/10;
+                this.tax=(player.getMoney()+EjendomSum)/this.taxRate;
             }
         }
         player.remove(this.tax);
