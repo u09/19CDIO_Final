@@ -27,10 +27,19 @@ public abstract class Ownable extends Fields {
     
     @Override
     public void landOnField(Players p) {
-        if(this.owner != null){
+        if(this.owner == null){
+           String k = GUI.getUserButtonPressed("Vil du købe grunden?", "Ja" , "Nej");
+            if(k=="Ja"){
+                this.owner=p;
+                p.remove(getPrice());
+            }
+        }
+        else{
             p.remove(getRent());
             this.owner.add(getRent());
+
         }
+            
     }
     
     public abstract int getRent();
