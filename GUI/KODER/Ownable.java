@@ -1,7 +1,7 @@
 package KODER;
 
 public abstract class Ownable extends Fields {
-    private Players owner;
+    protected Players owner;
     private int price;
     
     public Ownable(String name,int price){
@@ -28,19 +28,19 @@ public abstract class Ownable extends Fields {
     @Override
     public void landOnField(Players p) {
         if(this.owner == null){
-           String k = GUI.getUserButtonPressed("Vil du købe grunden?", "Ja" , "Nej");
+           String k = GUI.getUserButtonPressed("Vil du kï¿½be grunden?", "Ja" , "Nej");
             if(k=="Ja"){
                 this.owner=p;
                 p.remove(getPrice());
             }
         }
         else{
-            p.remove(getRent());
-            this.owner.add(getRent());
+            p.remove(getRent(p));
+            this.owner.add(getRent(p));
 
         }
             
     }
     
-    public abstract int getRent();
-}
+    public abstract int getRent(Players p);
+    }
