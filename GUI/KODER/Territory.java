@@ -6,9 +6,6 @@ public class Territory extends Ownable{
     
     public Territory(String name,String Colour,int price,int rent, int IH, int IIH, int IIIH,int IVH,int HO,int BH){
         super(name,price);
-<<<<<<< HEAD
-=======
-        this.setRent(rent);
         this.setColour(Colour);
     }
     public void setColour(String colour){
@@ -16,7 +13,6 @@ public class Territory extends Ownable{
     }
     public String getColour(){
         return this.colour;
->>>>>>> origin/master
     }
     
     @Override
