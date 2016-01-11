@@ -10,14 +10,15 @@ public class Jail extends Fields {
     }
 
     @Override
-    public void landOnField(Players p) {
+    public void landOnField(Players p){
+        if(p.getPosition()==11) return;
         if(jailedPlayers[p.getPlayer()]==false){
         GUI.setCar(11,getName());
         p.setPosition(11);
         jailedPlayers[p.getNumber()]=true;
         }
         else{
-        String b=GUI.getUserButtonPressed("Vil du betale 1000 eller slå med terninger","Betal 1000","Slå med terninger");
+        String b=GUI.getUserButtonPressed("Vil du betale 1000 eller slï¿½ med terninger","Betal 1000","Slï¿½ med terninger");
         if(b=="Betal 1000")
             payJail(p);
         else Nthrows[p.getPlayer()]++;

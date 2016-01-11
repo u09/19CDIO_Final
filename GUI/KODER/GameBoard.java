@@ -53,7 +53,7 @@ public class GameBoard {
         list.add(new Street.Builder().setTitle("Vimmelskaftet").setBgColor(Color.YELLOW).build());
         list.add(new Chance.Builder().setBgColor(Color.CYAN).build());
         list.add(new Street.Builder().setTitle("Nygade").setBgColor(Color.YELLOW).build());
-        list.add(new Street.Builder().setTitle("Scandlines R-P").setBgColor(Color.BLUE).build());
+        list.add(new Shipping.Builder().setTitle("Scandlines R-P").setBgColor(Color.BLUE).build());
         list.add(new Chance.Builder().setBgColor(Color.CYAN).build());
         list.add(new Street.Builder().setTitle("Frederiksberggade").setBgColor(Color.MAGENTA).build());
         list.add(new desktop_fields.Tax.Builder().setTitle("SKAT 2000 kr").setBgColor(Color.WHITE).build());
