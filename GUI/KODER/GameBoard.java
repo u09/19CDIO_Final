@@ -8,62 +8,168 @@ import desktop_resources.GUI;
 
 public class GameBoard {
     
+    public GameBoard() {
     
-
-    public GameBoard(){
-        
     }
-    //vi opretter en funktion til at oprette felter
-    public void createBoard(Map<String,String> Lang){
-        //felterne bliver sat ind i et array
+    // vi opretter en funktion til at oprette felter
+    public void createBoard(Map<String, String> Lang) {
+        // felterne bliver sat ind i et array
         ArrayList<Field> list = new ArrayList<Field>();
-        //her tilføjer vi de enkelte felter,sætter baggrunden og titlen  ( op til 22)
-        list.add(new Start.Builder().setTitle("START").setBgColor(Color.RED).build());
-        list.add(new Street.Builder().setTitle("Hvidovrevej").setBgColor(Color.BLUE).build());
-        list.add(new Chance.Builder().setBgColor(Color.CYAN).build());
-        list.add(new Street.Builder().setTitle("rodovervej").setBgColor(Color.BLUE).build());
-        list.add(new desktop_fields.Tax.Builder().setTitle("Betal indkomstskat").setBgColor(Color.WHITE).build());
-        list.add(new Shipping.Builder().setTitle("Scandlines H-H").setBgColor(Color.BLUE).build());
-        list.add(new Street.Builder().setTitle("Roskildevej").setBgColor(Color.ORANGE).build());
-        list.add(new Chance.Builder().setBgColor(Color.CYAN).build());
-        list.add(new Street.Builder().setTitle("Valby Langgade").setBgColor(Color.ORANGE).build());
-        list.add(new Street.Builder().setTitle("Allegade").setBgColor(Color.ORANGE).build());
-        list.add(new desktop_fields.Jail.Builder().setTitle("P� bes�g-I f�ngsel").setBgColor(Color.CYAN).build());
-        list.add(new Street.Builder().setTitle("Frederiksberg Alle").setBgColor(Color.GREEN).build());
-        list.add(new Brewery.Builder().setTitle("SQUASH").setBgColor(Color.RED).build());
-        list.add(new Street.Builder().setTitle("Bulowsvej").setBgColor(Color.GREEN).build());
-        list.add(new Street.Builder().setTitle("Gl.Kongevej").setBgColor(Color.GREEN).build());
-        list.add(new Shipping.Builder().setTitle("Mols Linjen").setBgColor(Color.BLUE).build());   
-        list.add(new Street.Builder().setTitle("Bernstorffsvej").setBgColor(Color.GRAY).build());
-        list.add(new Chance.Builder().setBgColor(Color.CYAN).build());
-        list.add(new Street.Builder().setTitle("Hellerupvej").setBgColor(Color.GRAY).build());
-        list.add(new Street.Builder().setTitle("Strandvejen").setBgColor(Color.GRAY).build());
-        list.add(new Empty.Builder().setBgColor(Color.PINK).build());
-        list.add(new Street.Builder().setTitle("Trianglen").setBgColor(Color.RED).build());
-        list.add(new Chance.Builder().setBgColor(Color.CYAN).build());
-        list.add(new Street.Builder().setTitle("Osterbrogade").setBgColor(Color.RED).build());
-        list.add(new Street.Builder().setTitle("Gronningen").setBgColor(Color.RED).build());
-        list.add(new Shipping.Builder().setTitle("Scandlines G-R").setBgColor(Color.BLUE).build());
-        list.add(new Street.Builder().setTitle("Bredegade").setBgColor(Color.WHITE).build());
-        list.add(new Street.Builder().setTitle("Kgs. Nytorv").setBgColor(Color.WHITE).build());
-        list.add(new Brewery.Builder().setTitle("COCA COLA").setBgColor(Color.RED).build());
-        list.add(new Street.Builder().setTitle("Ostergade").setBgColor(Color.WHITE).build());
-        list.add(new desktop_fields.Jail.Builder().setTitle("De f�ngsles").setBgColor(Color.CYAN).build());
-        list.add(new Street.Builder().setTitle("Amagertorv").setBgColor(Color.YELLOW).build());
-        list.add(new Street.Builder().setTitle("Vimmelskaftet").setBgColor(Color.YELLOW).build());
-        list.add(new Chance.Builder().setBgColor(Color.CYAN).build());
-        list.add(new Street.Builder().setTitle("Nygade").setBgColor(Color.YELLOW).build());
-        list.add(new Shipping.Builder().setTitle("Scandlines R-P").setBgColor(Color.BLUE).build());
-        list.add(new Chance.Builder().setBgColor(Color.CYAN).build());
-        list.add(new Street.Builder().setTitle("Frederiksberggade").setBgColor(Color.MAGENTA).build());
-        list.add(new desktop_fields.Tax.Builder().setTitle("SKAT 2000 kr").setBgColor(Color.WHITE).build());
-        list.add(new Street.Builder().setTitle("Radhuspladsen").setBgColor(Color.MAGENTA).build());
-        
+
+        // her tilføjer vi de enkelte felter, sætter titlen, evt. undertitel og beskrivelse, baggrundensfarven (op til 40)
+/*1*/   list.add(new Start.Builder().setTitle("START")
+            .setSubText("")
+            .setDescription("Hver gang De passerer START, modtag kr. 4000")
+            .setBgColor(Color.RED).build());
+        list.add(new Street.Builder().setTitle("Hvidovrevej")
+            .setSubText("kr. 1200")
+            .setDescription("Hvidovrevej")
+            .setBgColor(Color.BLUE).build());
+        list.add(new Chance.Builder()
+            .setBgColor(Color.CYAN).build());
+        list.add(new Street.Builder().setTitle("Rødovervej")
+            .setSubText("kr. 1200")
+            .setDescription("Rødovervej")
+            .setBgColor(Color.BLUE).build());
+/*5*/   list.add(new desktop_fields.Tax.Builder().setTitle("Skat")
+            .setSubText("Betal indkomstskat: 10% eller kr. 4000")
+            .setDescription("Betal indkomstskat: 10% eller kr. 4000")
+            .setBgColor(Color.WHITE).build());
+        list.add(new Shipping.Builder().setTitle("Scandlines 1")
+            .setSubText("kr. 4000")
+            .setDescription("Scandlines Helsingør - Helsingborg")
+            .setBgColor(Color.BLUE).build());
+        list.add(new Street.Builder().setTitle("Roskildevej")
+            .setSubText("kr. 2000")
+            .setDescription("Roskildevej")
+            .setBgColor(Color.ORANGE).build());
+        list.add(new Chance.Builder()
+            .setBgColor(Color.CYAN).build());
+        list.add(new Street.Builder().setTitle("Valby Langgade")
+            .setSubText("kr. 2000")
+            .setDescription("Valby Langgade")
+            .setBgColor(Color.ORANGE).build());
+/*10*/  list.add(new Street.Builder().setTitle("Allégade")
+            .setSubText("kr. 2400")
+            .setDescription("Allégade")
+            .setBgColor(Color.ORANGE).build());
+        list.add(new desktop_fields.Jail.Builder().setTitle("På besøg")
+            .setSubText("I fængsel")
+            .setDescription("De er på besøg i fængslet")
+            .setBgColor(Color.CYAN).build());
+        list.add(new Street.Builder().setTitle("Frederiksberg Allé")
+            .setSubText("kr. 2800")
+            .setDescription("Frederiksberg Allé")
+            .setBgColor(Color.GREEN).build());
+        list.add(new Brewery.Builder().setTitle("Squash")
+            .setSubText("kr. 3000")
+            .setDescription("Tapperi - Tuborg Squash")
+            .setBgColor(Color.RED).build());
+        list.add(new Street.Builder().setTitle("Bülowsvej")
+            .setSubText("kr. 2800")
+            .setDescription("Bülowsvej")
+            .setBgColor(Color.GREEN).build());
+/*15*/  list.add(new Street.Builder().setTitle("Gl. Kongevej")
+            .setSubText("kr. 3200")
+            .setDescription("Gl.Kongevej")
+            .setBgColor(Color.GREEN).build());
+        list.add(new Shipping.Builder().setTitle("Mols-Linjen")
+            .setSubText("kr. 4000")
+            .setDescription("Mols-Linjen - Din genvej i Danmark")
+            .setBgColor(Color.BLUE).build());
+        list.add(new Street.Builder().setTitle("Bernstorffsvej")
+            .setSubText("kr. 3600")
+            .setDescription("Bernstorffsvej")
+            .setBgColor(Color.GRAY).build());
+        list.add(new Chance.Builder()
+            .setBgColor(Color.CYAN).build());
+        list.add(new Street.Builder().setTitle("Hellerupvej")
+            .setSubText("kr. 3600")
+            .setDescription("Hellerupvej")
+            .setBgColor(Color.GRAY).build());
+/*20*/  list.add(new Street.Builder().setTitle("Strandvejen")
+            .setSubText("kr. 4000")
+            .setDescription("Strandvejen")
+            .setBgColor(Color.GRAY).build());
+        list.add(new Empty.Builder()
+            .setBgColor(Color.PINK).build());
+        list.add(new Street.Builder().setTitle("Trianglen")
+            .setSubText("kr. 4400")
+            .setDescription("Trianglen")
+            .setBgColor(Color.RED).build());
+        list.add(new Chance.Builder()
+            .setBgColor(Color.CYAN).build());
+        list.add(new Street.Builder().setTitle("Østerbrogade")
+            .setSubText("kr. 4400")
+            .setDescription("Østerbrogade")
+            .setBgColor(Color.RED).build());
+/*25*/  list.add(new Street.Builder().setTitle("Grønningen")
+            .setSubText("kr. 4800")
+            .setDescription("Grønningen")
+            .setBgColor(Color.RED).build());
+        list.add(new Shipping.Builder().setTitle("Scandlines 2")
+            .setSubText("kr. 4000")
+            .setDescription("Scandlines Gedser-Rostock")
+            .setBgColor(Color.BLUE).build());
+        list.add(new Street.Builder().setTitle("Bredegade")
+            .setSubText("kr. 5200")
+            .setDescription("Bredegade")
+            .setBgColor(Color.WHITE).build());
+        list.add(new Street.Builder().setTitle("Kgs. Nytorv")
+            .setSubText("kr. 5200")
+            .setDescription("Kgs. Nytorv")
+            .setBgColor(Color.WHITE).build());
+        list.add(new Brewery.Builder().setTitle("Coca Cola")
+            .setSubText("kr. 3000")
+            .setDescription("Tapperi - Coca Cola")
+            .setBgColor(Color.RED).build());
+/*30*/  list.add(new Street.Builder().setTitle("Østergade")
+            .setSubText("kr. 5600")
+            .setDescription("Østergade")
+            .setBgColor(Color.WHITE).build());
+        list.add(new desktop_fields.Jail.Builder().setTitle("De fængsles")
+            .setSubText("De fængsles")
+            .setDescription("De fængsles! Ryk frem til 'I fængsel'")
+            .setBgColor(Color.CYAN).build());
+        list.add(new Street.Builder().setTitle("Amagertorv")
+            .setSubText("kr. 6000")
+            .setDescription("Amagertorv")
+            .setBgColor(Color.YELLOW).build());
+        list.add(new Street.Builder().setTitle("Vimmelskaftet")
+            .setSubText("kr. 6000")
+            .setDescription("Vimmelskaftet")
+            .setBgColor(Color.YELLOW).build());
+        list.add(new Chance.Builder()
+            .setBgColor(Color.CYAN).build());
+/*35*/  list.add(new Street.Builder().setTitle("Nygade")
+            .setSubText("kr. 6400")
+            .setDescription("Nygade")
+            .setBgColor(Color.YELLOW).build());
+        list.add(new Shipping.Builder().setTitle("Scandlines 3")
+            .setSubText("kr. 4000")
+            .setDescription("Scandlines Rødby-Puttgarden")
+            .setBgColor(Color.BLUE).build());
+        list.add(new Chance.Builder()
+            .setBgColor(Color.CYAN).build());
+        list.add(new Street.Builder().setTitle("Frederiksberggade")
+            .setSubText("kr. 7000")
+            .setDescription("Frederiksberggade")
+            .setBgColor(Color.MAGENTA).build());
+        list.add(new desktop_fields.Tax.Builder().setTitle("Skat")
+            .setSubText("Betal indkomstskat: 10% eller kr. 4000")
+            .setDescription("Ekstraordinær statsskat: Betal kr. 2000")
+            .setBgColor(Color.WHITE).build());
+/*40*/  list.add(new Street.Builder().setTitle("Rådhuspladsen")
+            .setSubText("kr. 8000")
+            .setDescription("Rådhuspladsen")
+            .setBgColor(Color.MAGENTA).build());
+            
         //Vi laver field array og definere længden af arrayet
         Field[] fields = new Field[list.size()];
         
-        // Den overfører en indholdet fra den ene array til den anden.  
-        for(int i = 0; i < fields.length; i++) fields[i] = list.get(i);
+        // Den overfører en indholdet fra den ene array til den anden.
+        for (int i = 0; i < fields.length; i++)
+            fields[i] = list.get(i);
         GUI.create(fields);
     }
 }
