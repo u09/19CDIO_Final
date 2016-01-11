@@ -5,15 +5,15 @@ public class Territory extends Ownable{
     
     public Territory(String name,int price,int rent, int IH, int IIH, int IIIH,int IVH,int HO,int BH){
         super(name,price);
-        this.setRent(rent);
     }
     
     @Override
-    public int getRent(){
+    public int getRent(Players p){
+        this.setRent(rent,p);
         return this.rent;
     }
     
-    private void setRent(int rent){
+    private void setRent(int rent,Players p){
         this.rent=rent;
     }
 }

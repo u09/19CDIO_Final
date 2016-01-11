@@ -5,15 +5,15 @@ public class Labor_camp extends Ownable{
     
     public Labor_camp(String name,int price,int rent){
         super(name,price);
-        setRent(rent);
     }
     
     @Override
-    public int getRent(){
+    public int getRent(Players p){
+        setRent(rent,p);
         return this.rent;
     }
     
-    private void setRent(int rent){
+    private void setRent(int rent,Players p){
         Dicecup D=new Dicecup();
         D.Throw();
         int sum=D.sum();
