@@ -27,7 +27,7 @@ public abstract class Ownable extends Fields {
     
     @Override
     public void landOnField(Players p) {
-        if(this.owner != null){
+        if(this.owner!=null){
             p.remove(getRent());
             this.owner.add(getRent());
         }
