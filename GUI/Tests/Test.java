@@ -14,6 +14,8 @@ public class Test {
     public int[] TestDice(int i, int TEST){
         int[][] dice;
         if(TEST==1) dice=new int[][]{{6,4},{5,5},{3,2},{0,0}};
+        else if(TEST==2) dice=new int[][]{{1,1},{1,1},{0,0}};
+        else if(TEST==3) dice=new int[][]{{1,2},{0,0}};
         else dice=new int[][]{{0,0}};
         return dice[i];
     }

@@ -15,36 +15,39 @@ public class LuckCard {
         value = cardValue;
     }
     
-    public LuckCard(String text, String type, int value, int luckFieldNum) {
-        this.text = text;
+    public LuckCard(String type, String text, int value, int luckFieldNum) {
         this.type = type;
+        this.text = text;
         this.value = value;
         this.luckFieldNum = luckFieldNum;
     }
     
     public void useCard(Players p) {
         // 2, 7, 17, 22, 33, 36
-        String pickCard = GUI.getUserButtonPressed("Vil du prøve lykken?", "Ja", "Nej");
-       
-        if (pickCard.equals("Ja")) {
-            
-            LuckCard card = LuckController.getLuckCard();
-            
-            if (type == "Pay") p.remove(value);
-            else if (type == "Recieve") p.add(value); 
-            else {
-                if (type == "MoveBack") p.setPosition(p.getPosition() + value);
-                else if (type == "MoveToShip") {
-                    if (p.getPosition() < 6 && p.getPosition() > 36) p.setPosition(6);
-                    else if (p.getPosition() > 6 && p.getPosition() < 16) p.setPosition(16);
-                    else if (p.getPosition() > 16 && p.getPosition() < 26) p.setPosition(26);
-                    else p.setPosition(36);
-                }
-                else p.setPosition(value);
-                
-                GUI.removeCar(p.getPosition(), p.name());
-                GUI.setCar(value, p.name());
-            } 
+        GUI.displayChanceCard(text);
+        GUI.getUserButtonPressed("","OK");
+        if (type == "Pay") p.remove(value);
+        else if (type == "Receive") p.add(value);
+        else {
+            GUI.removeCar(p.getPosition(), p.name());
+            if (type == "MoveBack"){
+                p.setPosition(p.getPosition() + value);
+                if(p.getPosition()==-1) p.setPosition(39);
+            }
+            else if (type == "MoveToShip") {
+                if (p.getPosition() < 6 && p.getPosition() > 36) p.setPosition(6);
+                else if (p.getPosition() > 6 && p.getPosition() < 16) p.setPosition(16);
+                else if (p.getPosition() > 16 && p.getPosition() < 26) p.setPosition(26);
+                else p.setPosition(36);
+            }
+            else if(type=="MoveToJail") p.setPosition(31);
+            else p.setPosition(value);
+            if(type=="MoveToJail") GUI.setCar(11,p.name());
+            else GUI.setCar(p.getPosition(),p.name());
         }
+    }
+    
+    public boolean getLOF(){
+        return (type!="Receive" && type!="Pay");
     }
 }

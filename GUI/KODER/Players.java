@@ -56,7 +56,7 @@ public class Players {
     
     /**
      * vi opretter en metode som returnere positionen
-     * @return position 1-22
+     * @return position 1-40
      */
     public int getPosition(){
         return this.position;

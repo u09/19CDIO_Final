@@ -16,7 +16,7 @@ public class Controller{
     private FieldHandler F=new FieldHandler(); // Opretter et nyt objkekt
     private int DELAY=600;
     private String[] colors={Lang.get("F1"),Lang.get("F2"),Lang.get("F3"),Lang.get("F4"),Lang.get("F5"),Lang.get("F6")};
-    private final int TEST=1;
+    private final int TEST=2;
     private final int TEST_PLAYERS=2;
     
     public Controller(){
@@ -37,6 +37,7 @@ public class Controller{
     private void StartGame(){
         int[] D;
         int TI=-1;
+        Luck L;
         Jail J=(Jail) F.Field[10]; 
         while(true){
             TI++;
@@ -71,6 +72,14 @@ public class Controller{
             GUI.setDice(D[0],D[1]);
             totalP[this.turn].move(D[0]+D[1],this.DELAY,F);
             this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
+            
+            if(this.F.Field[totalP[turn].getPosition()-1] instanceof Luck){
+                L=(Luck)this.F.Field[totalP[turn].getPosition()-1];
+                if(L.getLOF()){
+                    L.setLOF(false);
+                    this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
+                }
+            }
             if(totalP[turn].dead()){
                 this.DEAD();
             }
