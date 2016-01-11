@@ -15,6 +15,7 @@ public class GameBoard {
     public void createBoard(Map<String, String> Lang) {
         // felterne bliver sat ind i et array
         ArrayList<Field> list = new ArrayList<Field>();
+
         // her tilføjer vi de enkelte felter, sætter titlen, evt. undertitel og beskrivelse, baggrundensfarven (op til 40)
 /*1*/   list.add(new Start.Builder().setTitle("START")
             .setSubText("")
@@ -135,7 +136,7 @@ public class GameBoard {
             .setSubText("kr. 8000").
             setBgColor(Color.MAGENTA).build());
             
-        // Vi laver field array og definere længden af arrayet
+        //Vi laver field array og definere længden af arrayet
         Field[] fields = new Field[list.size()];
         
         // Den overfører en indholdet fra den ene array til den anden.

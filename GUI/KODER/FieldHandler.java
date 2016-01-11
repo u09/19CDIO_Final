@@ -12,7 +12,7 @@ public class FieldHandler{
         new Luck("Prøv lykken"),
         new Territory("Valby Langgade",2000,100,600,1800,5400,8000,11000,1000),
         new Territory("Allégade",2400,150,800,2000,6000,9000,12000,1000),
-        new Parkering("På besøg"),
+        new Jail("På besøg"),
         new Territory("Frederiksberg Allé",2800,200,1000,3000,9000,12500,15000,2000),
         new Labor_camp("Squash",3000,100),
         new Territory("Bülowsvej",2800,200,1000,3000,9000,12500,15000,2000),
