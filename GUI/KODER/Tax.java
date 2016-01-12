@@ -11,7 +11,7 @@ public class Tax extends Fields{ // forlænger klasse med en anden klasse
     
     @Override
     public void landOnField(Players player){
-        if(player.getPosition()==38) this.tax=2000;
+        if(player.getPosition()==39) this.tax=2000;
         else{
             String b = GUI.getUserButtonPressed("Vil du betale 4000 eller 10%", "Betal 4000", "Betal 10%");
             if(b=="Betal 4000") this.tax=4000;

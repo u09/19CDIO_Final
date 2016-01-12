@@ -3,11 +3,11 @@ package KODER;
 public class LuckCard {
     private String text;   // variabel til visning af tekst i guien
     private String type;   // type så vi ved om der skal rykkes frem/tilbage,
-                           // betale til banken osv.
+    // betale til banken osv.
     private int value;  // værdien som vi skal bruge til at rykke frem/tilbage
-                        // eller betale/modtage beløb osv
+    // eller betale/modtage beløb osv
     private int luckFieldNum; // variabel til at vide om spilleren skal modtage
-                              // 4000 kr. ved passering af start
+    // 4000 kr. ved passering af start
     
     public LuckCard(String cardType, String cardText, int cardValue) {
         type = cardType;
@@ -30,7 +30,18 @@ public class LuckCard {
         else if (type == "Receive") p.add(value);
         else {
             GUI.removeCar(p.getPosition(), p.name());
-            if (type == "MoveBack"){
+            if((p.getPosition()==34 && luckFieldNum==5)||(p.getPosition()==37 && luckFieldNum==5)){
+                p.setPosition(24);
+                GUI.setCar(24, p.name());
+                p.add(4000);
+            }
+            else if((p.getPosition()==18 && luckFieldNum==3)||(p.getPosition()==23 && luckFieldNum==3)||
+                (p.getPosition()==34 && luckFieldNum==3)||(p.getPosition()==37 && luckFieldNum==3)) {
+                p.setPosition(12);
+                GUI.setCar(12, p.name());
+                p.add(4000);
+            }
+            else if (type == "MoveBack"){
                 p.setPosition(p.getPosition() + value);
                 if(p.getPosition()==0) p.setPosition(40);
             }
