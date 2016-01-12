@@ -2,8 +2,8 @@ package KODER;
 
 public class Jail extends Fields {
     
-    private boolean[] jailedPlayers={false,false,false,false,false,false};
-    private int[] Nthrows={0,0,0,0,0,0};
+    private static boolean[] jailedPlayers={false,false,false,false,false,false};
+    private static int[] Nthrows={0,0,0,0,0,0};
     
     public Jail(String name){
         super(name);
@@ -11,14 +11,15 @@ public class Jail extends Fields {
 
     @Override
     public void landOnField(Players p){
-        if(p.getPosition()==11) return;
+        if(p.getPosition()==11 && jailedPlayers[p.getPlayer()]==false) return;
         if(jailedPlayers[p.getPlayer()]==false){
-            GUI.setCar(11,getName());
+            GUI.setCar(11,p.name());
+            GUI.removeCar(31,p.name());
             p.setPosition(11);
-            jailedPlayers[p.getNumber()]=true;
+            jailedPlayers[p.getPlayer()]=true;
         }
         else{
-            String b=GUI.getUserButtonPressed("Vil du betale 1000 eller sl� med terninger","Betal 1000","Sl� med terninger");
+            String b=GUI.getUserButtonPressed("Vil du betale 1000 eller slå med terninger","Betal 1000","Slå med terninger");
             if(b=="Betal 1000") payJail(p);
             else Nthrows[p.getPlayer()]++;
         }

@@ -16,7 +16,7 @@ public class Controller{
     private FieldHandler F=new FieldHandler(); // Opretter et nyt objkekt
     private int DELAY=600;
     private String[] colors={Lang.get("F1"),Lang.get("F2"),Lang.get("F3"),Lang.get("F4"),Lang.get("F5"),Lang.get("F6")};
-    private final int TEST=2;
+    private final int TEST=5;
     private final int TEST_PLAYERS=2;
     
     public Controller(){
@@ -35,11 +35,12 @@ public class Controller{
      * Starter spillet. (While-loopet)
      */
     private void StartGame(){
+        boolean CheckJail=false;
         int[] D;
         int TI=-1;
         int ens=0;
         LuckController LC=new LuckController();
-        Jail J=(Jail) F.Field[10]; 
+        Jail J=(Jail) F.Field[10];
         while(true){
             TI++;
             GUI.getUserButtonPressed(this.Lang.get("KT"),"OK");
@@ -49,8 +50,14 @@ public class Controller{
             if(this.TEST!=0 && new Test().TestDice(TI,TEST)[0]!=0 && new Test().TestDice(TI,TEST)[1]!=0) D=new Test().TestDice(TI,TEST);
             else if(this.TEST!=0 && (new Test().TestDice(TI,TEST)[0]==0 || new Test().TestDice(TI,TEST)[1]==0)) break;
             else D=Dice.Throw();
+            GUI.setDice(D[0],D[1]);
+            System.out.print("Spiller"+(turn+1)+" slog {"+D[0]+";"+D[1]+"}\t|\t");
             
-            if(D[0]==D[1] && ens==2) MoveToJail(totalP[turn]);
+            if(D[0]==D[1] && ens==2){
+                ens=0;
+                MoveToJail(totalP[turn]);
+                continue;
+            }
             
             if(J.isJailed(turn)){
                 if(D[0]!=D[1]){
@@ -64,26 +71,38 @@ public class Controller{
                 else{
                     J.payJail(totalP[turn]);
                     totalP[turn].add(1000);
+                    CheckJail=true;
                 }
             }
             
-            GUI.setDice(D[0],D[1]);
             totalP[this.turn].move(D[0]+D[1],this.DELAY,F);
+            CheckMoneyStart(totalP[turn]);
             this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             if(LC.LOF){
                 LC.LOF=false;
                 this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             }
             if(totalP[turn].dead()) this.DEAD();
-            if(D[0]!=D[1]) this.CT();
+//            System.out.print(J.Nthrows(turn)+" "+(J.isJailed(turn)?"Ja":"Nej")+"\t|\t");
+            if(D[0]!=D[1] || (J.Nthrows(turn)==0 && J.isJailed(turn)) || CheckJail){
+                this.CT();
+                ens=0;
+                CheckJail=false;
+            }
             else ens++;
+            System.out.println();
         }
         if(this.TEST!=0) GUI.showMessage(Lang.get("TEST_FAEDIG"));
         else GUI.showMessage(Lang.get("VUNDET")+totalP[turn-1].name()+"!!!!");
         GUI.close();
     }
     
-    private void MoveToJail(Players p) {
+    private void CheckMoneyStart(Players p) {
+        
+    }
+
+    private void MoveToJail(Players p){
+        GUI.removeCar(p.getPosition(),p.name());
         GUI.setCar(11,p.name());
         p.setPosition(31);
         this.F.Field[p.getPosition()-1].landOnField(p);
