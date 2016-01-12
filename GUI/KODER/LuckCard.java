@@ -32,7 +32,7 @@ public class LuckCard {
             GUI.removeCar(p.getPosition(), p.name());
             if (type == "MoveBack"){
                 p.setPosition(p.getPosition() + value);
-                if(p.getPosition()==-1) p.setPosition(39);
+                if(p.getPosition()==0) p.setPosition(40);
             }
             else if (type == "MoveToShip") {
                 if (p.getPosition() < 6 && p.getPosition() > 36) p.setPosition(6);

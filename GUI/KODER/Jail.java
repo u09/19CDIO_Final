@@ -13,15 +13,14 @@ public class Jail extends Fields {
     public void landOnField(Players p){
         if(p.getPosition()==11) return;
         if(jailedPlayers[p.getPlayer()]==false){
-        GUI.setCar(11,getName());
-        p.setPosition(11);
-        jailedPlayers[p.getNumber()]=true;
+            GUI.setCar(11,getName());
+            p.setPosition(11);
+            jailedPlayers[p.getNumber()]=true;
         }
         else{
-        String b=GUI.getUserButtonPressed("Vil du betale 1000 eller sl� med terninger","Betal 1000","Sl� med terninger");
-        if(b=="Betal 1000")
-            payJail(p);
-        else Nthrows[p.getPlayer()]++;
+            String b=GUI.getUserButtonPressed("Vil du betale 1000 eller sl� med terninger","Betal 1000","Sl� med terninger");
+            if(b=="Betal 1000") payJail(p);
+            else Nthrows[p.getPlayer()]++;
         }
         
     }

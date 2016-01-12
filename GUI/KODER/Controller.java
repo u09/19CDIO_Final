@@ -37,28 +37,26 @@ public class Controller{
     private void StartGame(){
         int[] D;
         int TI=-1;
-        Luck L;
+        int ens=0;
+        LuckController LC=new LuckController();
         Jail J=(Jail) F.Field[10]; 
         while(true){
             TI++;
             GUI.getUserButtonPressed(this.Lang.get("KT"),"OK");
             
-            if(J.isJailed(turn)){
-                this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
-            }
+            if(J.isJailed(turn)) this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             
             if(this.TEST!=0 && new Test().TestDice(TI,TEST)[0]!=0 && new Test().TestDice(TI,TEST)[1]!=0) D=new Test().TestDice(TI,TEST);
             else if(this.TEST!=0 && (new Test().TestDice(TI,TEST)[0]==0 || new Test().TestDice(TI,TEST)[1]==0)) break;
             else D=Dice.Throw();
             
+            if(D[0]==D[1] && ens==2) MoveToJail(totalP[turn]);
+            
             if(J.isJailed(turn)){
                 if(D[0]!=D[1]){
-                    if(J.Nthrows(turn)==3){
-                        J.payJail(totalP[turn]);
-                    }
+                    if(J.Nthrows(turn)==3) J.payJail(totalP[turn]);
                     else{
                         GUI.showMessage("Du har ikke slået 2 ens");
-                        GUI.showMessage("Du har ikke sl�et 2 ens");
                         this.CT();
                         continue;
                     }
@@ -72,24 +70,25 @@ public class Controller{
             GUI.setDice(D[0],D[1]);
             totalP[this.turn].move(D[0]+D[1],this.DELAY,F);
             this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
-            
-            if(this.F.Field[totalP[turn].getPosition()-1] instanceof Luck){
-                L=(Luck)this.F.Field[totalP[turn].getPosition()-1];
-                if(L.getLOF()){
-                    L.setLOF(false);
-                    this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
-                }
+            if(LC.LOF){
+                LC.LOF=false;
+                this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             }
-            if(totalP[turn].dead()){
-                this.DEAD();
-            }
-            this.CT();
+            if(totalP[turn].dead()) this.DEAD();
+            if(D[0]!=D[1]) this.CT();
+            else ens++;
         }
         if(this.TEST!=0) GUI.showMessage(Lang.get("TEST_FAEDIG"));
         else GUI.showMessage(Lang.get("VUNDET")+totalP[turn-1].name()+"!!!!");
         GUI.close();
     }
     
+    private void MoveToJail(Players p) {
+        GUI.setCar(11,p.name());
+        p.setPosition(31);
+        this.F.Field[p.getPosition()-1].landOnField(p);
+    }
+
     private void DEAD(){
         /*
         int g=0,n=this.F.getNumOwn(totalP[turn]);

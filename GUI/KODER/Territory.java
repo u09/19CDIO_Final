@@ -16,12 +16,8 @@ public class Territory extends Ownable{
     }
     
     @Override
-<<<<<<< HEAD
-    public int getRent(){ 
-=======
     public int getRent(Players p){
         this.setRent(rent,p);
->>>>>>> origin/master
         return this.rent;
     }
     

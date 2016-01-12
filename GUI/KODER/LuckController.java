@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class LuckController{
     
-    public boolean LOF=false;
+    public static boolean LOF=false;
     private int cardNum = -1;
     public static LuckCard[] LuckCards={
         //Ryk frem/tilbage
@@ -37,7 +37,7 @@ public class LuckController{
         new LuckCard("Receive","Modtag udbytte af Deres aktier 1000 KR.", 1000),
         new LuckCard("Receive","Deres præmieobligation er kommet ud. De modtager 1000KR. af banken", 1000)
     };
-        
+    
     public LuckController(){
         Collections.shuffle(Arrays.asList(LuckCards));
     }
