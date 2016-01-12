@@ -16,8 +16,9 @@ public class Controller{
     private FieldHandler F=new FieldHandler(); // Opretter et nyt objkekt
     private int DELAY=600;
     private String[] colors={Lang.get("F1"),Lang.get("F2"),Lang.get("F3"),Lang.get("F4"),Lang.get("F5"),Lang.get("F6")};
-    private final int TEST=5;
+    private final int TEST=6;
     private final int TEST_PLAYERS=2;
+    private boolean firstR=true;
     
     public Controller(){
         PreGame();
@@ -76,7 +77,7 @@ public class Controller{
             }
             
             totalP[this.turn].move(D[0]+D[1],this.DELAY,F);
-            CheckMoneyStart(totalP[turn]);
+            CheckMoneyStart(totalP[turn],D);
             this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             if(LC.LOF){
                 LC.LOF=false;
@@ -90,6 +91,7 @@ public class Controller{
                 CheckJail=false;
             }
             else ens++;
+            if(TI==this.players-1) firstR=false;
             System.out.println();
         }
         if(this.TEST!=0) GUI.showMessage(Lang.get("TEST_FAEDIG"));
@@ -97,8 +99,13 @@ public class Controller{
         GUI.close();
     }
     
-    private void CheckMoneyStart(Players p) {
+    private void CheckMoneyStart(Players p,int[] D) {
         
+        int f =p.getPosition()-(D[0]+D[1]);
+        if(f<=1 && p.getPosition()!=1 && firstR==false){
+            p.add(4000);
+               
+        }
     }
 
     private void MoveToJail(Players p){

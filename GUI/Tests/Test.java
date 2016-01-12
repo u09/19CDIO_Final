@@ -18,6 +18,7 @@ public class Test {
         else if(TEST==3) dice=new int[][]{{1,2},{0,0}};
         else if(TEST==4) dice=new int[][]{{15,15},{21,19},{1,2},{19,21},{1,2},{21,19},{2,2},{21,19},{0,0}};
         else if(TEST==5) dice=new int[][]{{2,3},{2,3},{4,6},{4,6},{0,0}};
+        else if(TEST==6) dice=new int[][]{{21,19},{2,1},{2,1},{0,0}};
         else dice=new int[][]{{0,0}};
         return dice[i];
     }
