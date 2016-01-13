@@ -18,16 +18,10 @@ public class Labor_camp extends Ownable{
         D.Throw();
         int sum=D.sum();
         FieldHandler f=new FieldHandler();
-        /*
         Ownable O=(Ownable)f.Field[12];
         Ownable O2=(Ownable)f.Field[28];
-        if(O.getOwner().name()==O2.getOwner().name()) this.rent=sum*rent*2;
-        else if(O.getOwner().name() != O2.getOwner().name()) this.rent=sum*rent;
-        else if(O.getOwner().name()==null || O2.getOwner().name()==null) this.rent=0;
-        */
-    }
-
-    public void landOnField(Players player) {
         
     }
+
+    
 }

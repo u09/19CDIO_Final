@@ -30,15 +30,17 @@ public class LuckCard {
         else if (type == "Receive") p.add(value);
         else {
             GUI.removeCar(p.getPosition(), p.name());
-            if((p.getPosition()==34 && luckFieldNum==5)||(p.getPosition()==37 && luckFieldNum==5)){
-                p.setPosition(24);
-                GUI.setCar(24, p.name());
-                p.add(4000);
-            }
-            else if((p.getPosition()==18 && luckFieldNum==3)||(p.getPosition()==23 && luckFieldNum==3)||
-                (p.getPosition()==34 && luckFieldNum==3)||(p.getPosition()==37 && luckFieldNum==3)) {
-                p.setPosition(12);
-                GUI.setCar(12, p.name());
+            int n;
+            if(p.getPosition()==3) n=1;
+            else if(p.getPosition()==8) n=2;
+            else if(p.getPosition()==18) n=3;
+            else if(p.getPosition()==23) n=4;
+            else if(p.getPosition()==34) n=5;
+            else n=6;
+            
+            if(n>=luckFieldNum){
+                p.setPosition(value);
+                GUI.setCar(value, p.name());
                 p.add(4000);
             }
             else if (type == "MoveBack"){
