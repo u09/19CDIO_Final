@@ -10,8 +10,8 @@ public class Tax extends Fields{ // forlænger klasse med en anden klasse
     }
     
     @Override
-    public void landOnField(Players player){
-        if(player.getPosition()==39) this.tax=2000;
+    public void landOnField(Players p){
+        if(p.getPosition()==39) this.tax=2000;
         else{
             String b = GUI.getUserButtonPressed("Vil du betale 4000 eller 10%", "Betal 4000", "Betal 10%");
             if(b=="Betal 4000") this.tax=4000;
@@ -19,15 +19,16 @@ public class Tax extends Fields{ // forlænger klasse med en anden klasse
                 FieldHandler f= new FieldHandler();
                 int EjendomSum = 0; 
                 Ownable O;
-                for(int i = 0; i<f.Field.length; i++){
-                    if(f.Field[i] instanceof Ownable){
-                        O=(Ownable) f.Field[i];
-                        if(O.getOwner().name()==player.name()) EjendomSum+=O.getPrice();
+                
+                for(int i=1;i<=f.Field.length;i++){
+                    if(f.Field[i-1] instanceof Ownable){
+                        O=(Ownable) f.Field[i-1];
+                        if(O.getOwner()!=null && O.getOwner().getPlayer()==p.getPlayer()) EjendomSum +=O.getPrice();
                     }
                 }
-                this.tax=(player.getMoney()+EjendomSum)/this.taxRate;
+                this.tax=(p.getMoney()+EjendomSum)/this.taxRate;
             }
         }
-        player.remove(this.tax);
+        p.remove(this.tax);
     }
 }
