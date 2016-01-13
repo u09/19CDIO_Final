@@ -25,6 +25,9 @@ public class Test {
         else if(TEST==8) dice=new int[][]{{1,3},{20,18},{2,1},{0,0}};
         //Tester om man får lejen udbetalt for territory
         else if(TEST==9) dice=new int[][]{{1,2},{1,2},{0,0}};
+        //tester Labor camp
+        else if(TEST==10) dice=new int[][]{{5,7},{5,7},{9,7},{9,7}};
+        else if(TEST==11) dice=new int[][]{{20,16},{3,5},{2,1},{0,0}};
         else dice=new int[][]{{0,0}};
         return dice[i];
     }

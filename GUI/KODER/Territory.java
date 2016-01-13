@@ -2,18 +2,12 @@ package KODER;
 
 public class Territory extends Ownable{
     private int rent;
-    private String colour;
+    private TerritorysController TC;
     
-    public Territory(String name,String Colour,int price,int rent, int IH, int IIH, int IIIH,int IVH,int HO,int BH){
+    public Territory(int id,String name,String Colour,int price,int rent, int IH, int IIH, int IIIH,int IVH,int HO,int BH){
         super(name,price);
-        this.setColour(Colour);
         this.rent=rent;
-    }
-    private void setColour(String colour){
-        this.colour=colour;
-    }
-    public String getColour(){
-        return this.colour;
+        TC=new TerritorysController(id,Colour,new int[]{IH,IIH,IIIH,IVH,HO});
     }
     
     @Override
@@ -24,5 +18,16 @@ public class Territory extends Ownable{
     
     private void setRent(int rent,Players p){
         this.rent=rent;
+    }
+    
+    public String getColour(){
+        return TC.getColor();
+    }
+    
+    public int getId(){
+        return TC.getId();
+    }
+    public boolean[] GetHouse(){
+        return TC.giveHouses();
     }
 }
