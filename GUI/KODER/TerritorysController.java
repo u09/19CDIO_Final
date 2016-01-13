@@ -5,6 +5,7 @@ public class TerritorysController {
     private boolean[] House={false,false,false,false,false};
     private String col;
     private FieldHandler F=new FieldHandler();
+    
     private int id;
     
     public TerritorysController(int id,String color,int[] ar){
@@ -34,7 +35,7 @@ public class TerritorysController {
         return n;
     }
 
-    private int[] GetOtherGrounds() {
+    public int[] GetOtherGrounds() {
         int A=0;
         int B=0;
         int C=0;
@@ -60,7 +61,13 @@ public class TerritorysController {
     public int getId() {
         return this.id;
     }
-
+    
+    public int getOwner(int owner){
+        
+        Ownable O=(Ownable)F.Field[owner];
+        return O.getOwner().getPlayer();
+    }
+    
     public boolean[] giveHouses() {
         return this.House;
     }
