@@ -24,12 +24,15 @@ public class GameBoard {
         list.add(new Street.Builder().setTitle("Hvidovrevej")
             .setSubText("kr. 1200")
             .setDescription("Hvidovrevej")
+            .setFgColor(Color.WHITE)
             .setBgColor(Color.BLUE).build());
         list.add(new Chance.Builder()
-            .setBgColor(Color.CYAN).build());
+            .setFgColor(Color.GREEN)
+            .setBgColor(Color.BLACK).build());
         list.add(new Street.Builder().setTitle("Rødovervej")
             .setSubText("kr. 1200")
             .setDescription("Rødovervej")
+            .setFgColor(Color.WHITE)
             .setBgColor(Color.BLUE).build());
 /*5*/   list.add(new desktop_fields.Tax.Builder().setTitle("Skat")
             .setSubText("Betal indkomstskat: 10% eller kr. 4000")
@@ -38,13 +41,15 @@ public class GameBoard {
         list.add(new Shipping.Builder().setTitle("Scandlines 1")
             .setSubText("kr. 4000")
             .setDescription("Scandlines Helsingør - Helsingborg")
+            .setFgColor(Color.WHITE)
             .setBgColor(Color.BLUE).build());
         list.add(new Street.Builder().setTitle("Roskildevej")
             .setSubText("kr. 2000")
             .setDescription("Roskildevej")
             .setBgColor(Color.ORANGE).build());
         list.add(new Chance.Builder()
-            .setBgColor(Color.CYAN).build());
+            .setFgColor(Color.GREEN)
+            .setBgColor(Color.BLACK).build());
         list.add(new Street.Builder().setTitle("Valby Langgade")
             .setSubText("kr. 2000")
             .setDescription("Valby Langgade")
@@ -76,29 +81,32 @@ public class GameBoard {
         list.add(new Shipping.Builder().setTitle("Mols-Linjen")
             .setSubText("kr. 4000")
             .setDescription("Mols-Linjen - Din genvej i Danmark")
+            .setFgColor(Color.WHITE)
             .setBgColor(Color.BLUE).build());
         list.add(new Street.Builder().setTitle("Bernstorffsvej")
             .setSubText("kr. 3600")
             .setDescription("Bernstorffsvej")
             .setBgColor(Color.GRAY).build());
         list.add(new Chance.Builder()
-            .setBgColor(Color.CYAN).build());
+            .setFgColor(Color.GREEN)
+            .setBgColor(Color.BLACK).build());
         list.add(new Street.Builder().setTitle("Hellerupvej")
             .setSubText("kr. 3600")
-            .setDescription("Hellerupvej")
+            .setDescription("Hellerupvej - Leje af grund: kr. 300 m/ 1 hus > 1400. 2 hus > 4000. 3 hus > 11000. 4 hus > 15000. Hotel > 19000")
             .setBgColor(Color.GRAY).build());
 /*20*/  list.add(new Street.Builder().setTitle("Strandvejen")
             .setSubText("kr. 4000")
             .setDescription("Strandvejen")
             .setBgColor(Color.GRAY).build());
         list.add(new Empty.Builder()
-            .setBgColor(Color.PINK).build());
+            .setBgColor(Color.LIGHT_GRAY).build());
         list.add(new Street.Builder().setTitle("Trianglen")
             .setSubText("kr. 4400")
             .setDescription("Trianglen")
             .setBgColor(Color.RED).build());
         list.add(new Chance.Builder()
-            .setBgColor(Color.CYAN).build());
+            .setFgColor(Color.GREEN)
+            .setBgColor(Color.BLACK).build());
         list.add(new Street.Builder().setTitle("Østerbrogade")
             .setSubText("kr. 4400")
             .setDescription("Østerbrogade")
@@ -110,6 +118,7 @@ public class GameBoard {
         list.add(new Shipping.Builder().setTitle("Scandlines 2")
             .setSubText("kr. 4000")
             .setDescription("Scandlines Gedser-Rostock")
+            .setFgColor(Color.WHITE)
             .setBgColor(Color.BLUE).build());
         list.add(new Street.Builder().setTitle("Bredegade")
             .setSubText("kr. 5200")
@@ -140,7 +149,8 @@ public class GameBoard {
             .setDescription("Vimmelskaftet")
             .setBgColor(Color.YELLOW).build());
         list.add(new Chance.Builder()
-            .setBgColor(Color.CYAN).build());
+            .setFgColor(Color.GREEN)
+            .setBgColor(Color.BLACK).build());
 /*35*/  list.add(new Street.Builder().setTitle("Nygade")
             .setSubText("kr. 6400")
             .setDescription("Nygade")
@@ -148,13 +158,15 @@ public class GameBoard {
         list.add(new Shipping.Builder().setTitle("Scandlines 3")
             .setSubText("kr. 4000")
             .setDescription("Scandlines Rødby-Puttgarden")
+            .setFgColor(Color.WHITE)
             .setBgColor(Color.BLUE).build());
         list.add(new Chance.Builder()
-            .setBgColor(Color.CYAN).build());
+            .setFgColor(Color.GREEN)
+            .setBgColor(Color.BLACK).build());
         list.add(new Street.Builder().setTitle("Frederiksberggade")
             .setSubText("kr. 7000")
             .setDescription("Frederiksberggade")
-            .setBgColor(Color.MAGENTA).build());
+            .setBgColor(Color.MAGENTA.darker()).build());
         list.add(new desktop_fields.Tax.Builder().setTitle("Skat")
             .setSubText("Betal indkomstskat: 10% eller kr. 4000")
             .setDescription("Ekstraordinær statsskat: Betal kr. 2000")
@@ -162,7 +174,7 @@ public class GameBoard {
 /*40*/  list.add(new Street.Builder().setTitle("Rådhuspladsen")
             .setSubText("kr. 8000")
             .setDescription("Rådhuspladsen")
-            .setBgColor(Color.MAGENTA).build());
+            .setBgColor(Color.MAGENTA.darker()).build());
             
         //Vi laver field array og definere længden af arrayet
         Field[] fields = new Field[list.size()];
