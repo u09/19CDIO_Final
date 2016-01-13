@@ -7,8 +7,9 @@ public class Territory extends Ownable{
     public Territory(String name,String Colour,int price,int rent, int IH, int IIH, int IIIH,int IVH,int HO,int BH){
         super(name,price);
         this.setColour(Colour);
+        this.rent=rent;
     }
-    public void setColour(String colour){
+    private void setColour(String colour){
         this.colour=colour;
     }
     public String getColour(){

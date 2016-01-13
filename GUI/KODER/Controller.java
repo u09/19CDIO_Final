@@ -16,7 +16,7 @@ public class Controller{
     private FieldHandler F=new FieldHandler(); // Opretter et nyt objkekt
     private int DELAY=600;
     private String[] colors={Lang.get("F1"),Lang.get("F2"),Lang.get("F3"),Lang.get("F4"),Lang.get("F5"),Lang.get("F6")};
-    private final int TEST=0;
+    private final int TEST=9;
     private final int TEST_PLAYERS=2;
     private boolean firstR=true;
     
