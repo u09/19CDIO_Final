@@ -23,6 +23,8 @@ public class Test {
         else if(TEST==7) dice=new int[][]{{5,12},{2,1},{2,1},{0,0}};
         //tester om de 2 forskellige tax felter har 2 forskellige "effekter"
         else if(TEST==8) dice=new int[][]{{1,3},{20,18},{2,1},{0,0}};
+        //tester Labor camp
+        else if(TEST==9) dice=new int[][]{{5,7},{5,7},{9,7},{9,7}};
         else dice=new int[][]{{0,0}};
         return dice[i];
     }
