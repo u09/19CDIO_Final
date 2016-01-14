@@ -19,7 +19,7 @@ public class GameBoard {
         // her tilføjer vi de enkelte felter, sætter titlen, evt. undertitel og beskrivelse, baggrundensfarven (op til 40)
 /*1*/   list.add(new Start.Builder().setTitle("START")
             .setSubText("")
-            .setDescription(Lang.get("StartPenge"))
+            .setDescription("Hver gang De passerer START, modtag kr. 4000")
             .setBgColor(Color.RED).build());
         list.add(new Street.Builder().setTitle("Hvidovrevej")
             .setSubText("kr. 1200")
@@ -35,8 +35,8 @@ public class GameBoard {
             .setFgColor(Color.WHITE)
             .setBgColor(Color.BLUE).build());
 /*5*/   list.add(new desktop_fields.Tax.Builder().setTitle("Skat")
-            .setSubText(Lang.get("TAX_Check"))
-            .setDescription(Lang.get("TAX_Check"))
+            .setSubText("Betal indkomstskat: 10% eller kr. 4000")
+            .setDescription("Betal indkomstskat: 10% eller kr. 4000")
             .setBgColor(Color.WHITE).build());
         list.add(new Shipping.Builder().setTitle("Scandlines 1")
             .setSubText("kr. 4000")
@@ -60,7 +60,7 @@ public class GameBoard {
             .setBgColor(Color.ORANGE).build());
         list.add(new desktop_fields.Jail.Builder().setTitle("På besøg")
             .setSubText("I fængsel")
-            .setDescription(Lang.get("Bes�g"))
+            .setDescription("De er på besøg i fængslet")
             .setBgColor(Color.CYAN).build());
         list.add(new Street.Builder().setTitle("Frederiksberg Allé")
             .setSubText("kr. 2800")
@@ -92,7 +92,7 @@ public class GameBoard {
             .setBgColor(Color.BLACK).build());
         list.add(new Street.Builder().setTitle("Hellerupvej")
             .setSubText("kr. 3600")
-            .setDescription("Hellerupvej")
+            .setDescription("Hellerupvej - Leje af grund: kr. 300 m/ 1 hus > 1400. 2 hus > 4000. 3 hus > 11000. 4 hus > 15000. Hotel > 19000")
             .setBgColor(Color.GRAY).build());
 /*20*/  list.add(new Street.Builder().setTitle("Strandvejen")
             .setSubText("kr. 4000")
@@ -136,9 +136,9 @@ public class GameBoard {
             .setSubText("kr. 5600")
             .setDescription("Østergade")
             .setBgColor(Color.WHITE).build());
-        list.add(new desktop_fields.Jail.Builder().setTitle(Lang.get("F�ngsles"))
-            .setSubText(Lang.get("F�ngsles"))
-            .setDescription(Lang.get("F�ngslesD"))
+        list.add(new desktop_fields.Jail.Builder().setTitle("De fængsles")
+            .setSubText("De fængsles")
+            .setDescription("De fængsles! Ryk frem til 'I fængsel'")
             .setBgColor(Color.CYAN).build());
         list.add(new Street.Builder().setTitle("Amagertorv")
             .setSubText("kr. 6000")
@@ -168,8 +168,8 @@ public class GameBoard {
             .setDescription("Frederiksberggade")
             .setBgColor(Color.MAGENTA.darker()).build());
         list.add(new desktop_fields.Tax.Builder().setTitle("Skat")
-            .setSubText(Lang.get("TAX_Check2"))
-            .setDescription(Lang.get("Tax_Check2"))
+            .setSubText("Betal indkomstskat: 10% eller kr. 4000")
+            .setDescription("Ekstraordinær statsskat: Betal kr. 2000")
             .setBgColor(Color.WHITE).build());
 /*40*/  list.add(new Street.Builder().setTitle("Rådhuspladsen")
             .setSubText("kr. 8000")
