@@ -65,7 +65,7 @@ public class Controller{
                 if(D[0]!=D[1]){
                     if(J.Nthrows(turn)==3) J.payJail(totalP[turn]);
                     else{
-                        GUI.showMessage("Du har ikke slået 2 ens");
+                        GUI.showMessage(Lang.get("Ikke2ens"));
                         this.CT();
                         continue;
                     }

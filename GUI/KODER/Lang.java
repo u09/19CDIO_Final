@@ -12,6 +12,9 @@ public class Lang {
         Danish.put("NAME",          "Indtast navn for spiller nummer ");
         Danish.put("NAME2",         "Navnet eksisterer allerede. Vænligst indtast et andet navn for spiller nummer ");
         Danish.put("TAX_Check",     "Du skal betale 4000 eller 10% af din pengebeholdning.");
+        Danish.put("TAX_Check2",    "Betal indkomstskat kr. 2000");
+        Danish.put("B4000",         "Betal 4000");
+        Danish.put("B10",           "Betal 10%");
         Danish.put("LC_Check",      "100 x terningernes værdi");
         Danish.put("LP",            "Du er landet på ");
         Danish.put("BETAL",         "Du skal betale ");
@@ -42,7 +45,16 @@ public class Lang {
         Danish.put("SAELGEHVAD",    "Hvad vil du sælge?");
         Danish.put("FLERE",         "Vil du sælge flere ejendomme?");
         Danish.put("FAAPENGE",      "Du har for faa penge i din pengebeholdning til at koebe ");
+        Danish.put("Ikke2ens",      "Du har ikke sl�et 2 ens");
         Danish.put("TEST_FAEDIG",   "Testen er færdig!");
+        Danish.put("StartPenge",    "Hver gang De passerer START, modtag kr. 4000");
+        Danish.put("Besøg",         "Du er på besøg i fængslet" );
+        Danish.put("Fængsles",      "De fængsles" );
+        Danish.put("FængslesD",     "De fængsles! Ryk frem til 'I fængsel'" );
+        Danish.put("iFængsel",      "Vil du betale 1000 eller slå med terninger?");
+        Danish.put("iFængselB",     "Betal kr. 1000");
+        Danish.put("iFængselT",     "Kast med terninger");
+        Danish.put("PrøvL",         "Vil du prøve lykken?");
         
         if (input == "DA") return Danish;
         else return Danish;

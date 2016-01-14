@@ -1,8 +1,11 @@
 package KODER;
 
+import java.util.Map;
+
 public class Tax extends Fields{ // forlænger klasse med en anden klasse
     private int tax;
     private int taxRate=10;
+    private final Map<String, String> Lang=new Lang().lang("DA");
     
     public Tax(String name, int tax){ // Konstruktør til at sætte fæltnavn og lejen
         super(name);
@@ -13,8 +16,8 @@ public class Tax extends Fields{ // forlænger klasse med en anden klasse
     public void landOnField(Players p){
         if(p.getPosition()==39) this.tax=2000;
         else{
-            String b = GUI.getUserButtonPressed("Vil du betale 4000 eller 10%", "Betal 4000", "Betal 10%");
-            if(b=="Betal 4000") this.tax=4000;
+            String b = GUI.getUserButtonPressed(Lang.get("TAX_Check"), Lang.get("B4000"), Lang.get("B10"));
+            if(b==Lang.get("B4000")) this.tax=4000;
             else{
                 FieldHandler f= new FieldHandler();
                 int EjendomSum = 0; 
