@@ -23,7 +23,7 @@ public class LuckCard {
     }
     
     public void useCard(Players p) {
-        // 2, 7, 17, 22, 33, 36
+        // 3, 8, 18, 23, 34, 37
         GUI.displayChanceCard(text);
         GUI.getUserButtonPressed("","OK");
         if (type == "Pay") p.remove(value);

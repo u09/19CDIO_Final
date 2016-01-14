@@ -21,17 +21,17 @@ public class GameBoard {
             .setSubText("")
             .setDescription(Lang.get("StartPenge"))
             .setBgColor(Color.RED).build());
-        list.add(new Street.Builder().setTitle("Hvidovrevej")
+        list.add(new Street.Builder().setTitle("Rødovervej")
             .setSubText("kr. 1200")
-            .setDescription("Hvidovrevej")
+            .setDescription("Rødovervej")
             .setFgColor(Color.WHITE)
             .setBgColor(Color.BLUE).build());
         list.add(new Chance.Builder()
             .setFgColor(Color.GREEN)
             .setBgColor(Color.BLACK).build());
-        list.add(new Street.Builder().setTitle("Rødovervej")
+        list.add(new Street.Builder().setTitle("Hvidovrevej")
             .setSubText("kr. 1200")
-            .setDescription("Rødovervej")
+            .setDescription("Hvidovrevej")
             .setFgColor(Color.WHITE)
             .setBgColor(Color.BLUE).build());
 /*5*/   list.add(new desktop_fields.Tax.Builder().setTitle("Skat")
