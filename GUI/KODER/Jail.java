@@ -1,9 +1,12 @@
 package KODER;
 
+import java.util.Map;
+
 public class Jail extends Fields {
     
     private static boolean[] jailedPlayers={false,false,false,false,false,false};
     private static int[] Nthrows={0,0,0,0,0,0};
+    private final Map<String, String> Lang=new Lang().lang("DA");
     
     public Jail(String name){
         super(name);
@@ -19,8 +22,8 @@ public class Jail extends Fields {
             jailedPlayers[p.getPlayer()]=true;
         }
         else{
-            String b=GUI.getUserButtonPressed("Vil du betale 1000 eller sl√• med terninger","Betal 1000","Sl√• med terninger");
-            if(b=="Betal 1000") payJail(p);
+            String b=GUI.getUserButtonPressed(Lang.get("iFÊngsel"),Lang.get("iFÊngselB"),Lang.get("iFÊngselT"));
+            if(b==Lang.get("iFÊngselB")) payJail(p);
             else Nthrows[p.getPlayer()]++;
         }
         
