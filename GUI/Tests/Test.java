@@ -2,6 +2,7 @@ package Tests;
 
 import java.util.Map;
 import KODER.FieldHandler;
+import KODER.Ownable;
 import KODER.Players;
 import desktop_resources.GUI;
 
@@ -28,7 +29,20 @@ public class Test {
         //tester Labor camp
         else if(TEST==10) dice=new int[][]{{5,7},{5,7},{9,7},{9,7}};
         else if(TEST==11) dice=new int[][]{{20,16},{3,5},{2,1},{0,0}};
+        else if(TEST==12) dice=new int[][]{{3,1},{3,1},{3,1},{19,21},{19,21},{19,21},{0,0}};
         else dice=new int[][]{{0,0}};
         return dice[i];
+    }
+
+    public void TestSell(Players p, FieldHandler f) {
+        p.remove(120000);
+        Ownable O;
+        for(int i=1;i<=40;i++){
+            if(f.Field[i-1] instanceof Ownable){
+                O=(Ownable)f.Field[i-1];
+                O.setOwner(p);
+                GUI.setOwner(i,p.name());
+            }
+        }
     }
 }

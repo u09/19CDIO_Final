@@ -5,7 +5,8 @@ public class Dicecup {
     public Dicecup(){
         
     }
- private int t1=0,t2=0;
+    
+    private static int t1=0,t2=0;
     
     public int[] Throw(){
         // Aendre tallet '6' efter Math.random() funktionen, til antallet af sider du ønsker terningen skal have.
@@ -16,6 +17,7 @@ public class Dicecup {
         int[] K={this.t1,this.t2};
         return K;
     }
+    
     public int sum(){
         // Terningerne samles i et raflebæger
         return this.t1+this.t2;

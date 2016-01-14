@@ -13,7 +13,7 @@ public abstract class Ownable extends Fields {
         return owner;
     }
 
-    public void setOwner(Players owner) {
+    public void setOwner(Players owner){
         this.owner = owner;
     }
     
@@ -38,10 +38,12 @@ public abstract class Ownable extends Fields {
         else{
             Jail J = new Jail(p.name());
             if(J.isJailed(this.owner.getPlayer())==false){
-                p.remove(getRent(p));
-                this.owner.add(getRent(p));   
+                if(this.owner.name()!=p.name()){
+                    GUI.showMessage("Du skal betale");
+                    p.remove(getRent(p));
+                    this.owner.add(getRent(p));   
+                }
             }
-           
         }
             
     }

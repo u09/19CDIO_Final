@@ -1,5 +1,6 @@
 package KODER;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
 import desktop_resources.GUI;
@@ -16,8 +17,8 @@ public class Controller{
     private FieldHandler F=new FieldHandler(); // Opretter et nyt objkekt
     private int DELAY=600;
     private String[] colors={Lang.get("F1"),Lang.get("F2"),Lang.get("F3"),Lang.get("F4"),Lang.get("F5"),Lang.get("F6")};
-    private final int TEST=9;
-    private final int TEST_PLAYERS=2;
+    private final int TEST=12;
+    private final int TEST_PLAYERS=3;
     private boolean firstR=true;
     
     public Controller(){
@@ -29,7 +30,7 @@ public class Controller{
     private void Test(){
         this.DELAY=0;
         Test test=new Test();
-        if(this.TEST==1) {}//TEST
+        if(this.TEST==12) test.TestSell(totalP[turn],F);
     }
     
     /**
@@ -52,7 +53,7 @@ public class Controller{
             else if(this.TEST!=0 && (new Test().TestDice(TI,TEST)[0]==0 || new Test().TestDice(TI,TEST)[1]==0)) break;
             else D=Dice.Throw();
             GUI.setDice(D[0],D[1]);
-            System.out.print("Spiller"+(turn+1)+" slog {"+D[0]+";"+D[1]+"}\t|\t");
+            System.out.print("Spiller"+(turn+1)+" slog {"+D[0]+";"+D[1]+"}");
             
             if(D[0]==D[1] && ens==2){
                 ens=0;
@@ -77,18 +78,26 @@ public class Controller{
             }
             
             totalP[this.turn].move(D[0]+D[1],this.DELAY,F);
+            
             CheckMoneyStart(totalP[turn],D);
+            
             this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
+            
             if(LC.LOF){
                 LC.LOF=false;
                 this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             }
-            if(totalP[turn].dead()) this.DEAD();
-//            System.out.print(J.Nthrows(turn)+" "+(J.isJailed(turn)?"Ja":"Nej")+"\t|\t");
-            if(D[0]!=D[1] || (J.Nthrows(turn)==0 && J.isJailed(turn)) || CheckJail){
+            if((D[0]!=D[1] && !totalP[turn].dead()) || (J.Nthrows(turn)==0 && J.isJailed(turn)) || CheckJail){
                 this.CT();
                 ens=0;
                 CheckJail=false;
+            }
+            if(totalP[turn].dead()){
+                this.DEAD();
+                if(totalP[turn].dead()){
+                    ens=0;
+                    this.CT();
+                }
             }
             else ens++;
             if(TI==this.players-1) firstR=false;
@@ -114,8 +123,64 @@ public class Controller{
         p.setPosition(31);
         this.F.Field[p.getPosition()-1].landOnField(p);
     }
+    
+    private void printArr(int[] arr){
+        System.out.println("Array");
+        System.out.println("[");
+        for(int i=1;i<=arr.length;i++) System.out.println("\t"+(i-1)+" : "+arr[i-1]+",");
+        System.out.println("]");
+    }
+    
+    private void printArr(String[] arr){
+        System.out.println("Array");
+        System.out.println("[");
+        for(int i=1;i<=arr.length;i++) System.out.println("\t"+(i-1)+" : "+arr[i-1]+",");
+        System.out.println("]");
+    }
 
     private void DEAD(){
+        Ownable O;
+        String sell;
+        int p=0;
+        int[] n=F.getOwn(totalP[turn]);
+        for(int i=1;i<=n.length;i++){
+            O=(Ownable)F.Field[n[i-1]-1];
+            p+=O.getPrice()/2;
+        }
+        
+        if(totalP[turn].getMoney()+p<0){
+            for(int i=1;i<=n.length;i++){
+                O=(Ownable)F.Field[n[i-1]-1];
+                O.setOwner(null);
+                GUI.removeOwner(n[i-1]);
+            }
+            GUI.removeAllCars(totalP[turn].name());
+        }
+        else{
+            String[] ar;
+            String name;
+            int id;
+            String check="";
+            while(true){
+                n=F.getOwn(totalP[turn]);
+                ar=new String[n.length];
+                for(int i=1;i<=n.length;i++){
+                    O=(Ownable)F.Field[n[i-1]-1];
+                    ar[i-1]=O.getName()+" ("+O.getPrice()/2+")";
+                }
+                sell=GUI.getUserSelection(Lang.get("SAELGEHVAD"),ar);
+                if(sell.substring(sell.length()-7,sell.length()-6).equals(" ")) name=sell.substring(0,sell.length()-7);
+                else name=sell.substring(0,sell.length()-6);
+                id=F.nameToNum(name);
+                O=(Ownable)F.Field[id-1];
+                O.setOwner(null);
+                GUI.removeOwner(id);
+                totalP[turn].add(O.getPrice()/2);
+                if(totalP[turn].getMoney()>=0 && n.length>1) check=GUI.getUserButtonPressed(Lang.get("FLERE"),Lang.get("Y"),Lang.get("N"));
+                if(check.equals(Lang.get("N")) || n.length==1) break;
+            }
+        }
+        
         /*
         int g=0,n=this.F.getNumOwn(totalP[turn]);
         String[] arrr=this.F.getOwn(totalP[turn]);
@@ -155,7 +220,7 @@ public class Controller{
             }
             else this.DeadPlayers++;
         }
-         */
+        */
     }
     
     /**

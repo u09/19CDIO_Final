@@ -43,21 +43,36 @@ public class FieldHandler{
         new Tax("Ekstraordinær statsskat: Betal 2000kr",2000),
         new Territory(40,"Rådhuspladsen","Magenta",8000,1000,4000,12000,28000,34000,40000,4000)
     };
-
-
-
-    public int getNumOwn(Players player){
-        int num=0;
+    
+    public int[] getOwn(Players p){
         Ownable O;
+        int t=0;
         for(int i=1;i<=40;i++){
-            if(!(Field[i-1] instanceof Ownable)) continue;
-            O=(Ownable)Field[i-1];
-            if(O.getOwner().name().equals(player.name())) num++;
+            if(Field[i-1] instanceof Ownable){
+                O=(Ownable)Field[i-1];
+                if(O.getOwner()!=null && O.getOwner().getPlayer()==p.getPlayer()) t++;
+            }
         }
-        return num;
+        int[] ar=new int[t];
+        t=-1;
+        for(int i=1;i<=40;i++){
+            if(Field[i-1] instanceof Ownable){
+                O=(Ownable)Field[i-1];
+                if(O.getOwner()!=null && O.getOwner().getPlayer()==p.getPlayer()){
+                    t++;
+                    ar[t]=i;
+                }
+            }
+        }
+        return ar;
     }
-
-    public String[] getOwn(Players player){
+    
+    public int nameToNum(String n){
+        for(int i=1;i<=40;i++) if(Field[i-1].getName().equals(n)) return i;
+        return 0;
+    }
+    
+    public String[] getNameOwn(Players player){
         
         return null;
     }
