@@ -13,16 +13,11 @@ public class Territory extends Ownable {
     }
     
     @Override
-    public int getRent(Players p) {
-        this.setRent(rent, p);
-        return this.rent;
+    public int getRent(Players p){
+        return (getOwnedBy()?rent*2:rent);
     }
     
-    private void setRent(int rent, Players p) {
-        this.rent = (getOwnedBy() ? rent*2 : rent);
-    }
-    
-    public String getColour() {
+    public String getColour(){
         return TC.getColor();
     }
     
