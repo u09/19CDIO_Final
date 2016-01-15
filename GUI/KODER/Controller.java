@@ -115,10 +115,10 @@ public class Controller{
         int f =p.getPosition()-(D[0]+D[1]);
         if(f<=1 && p.getPosition()!=1 && firstR==false){
             p.add(4000);
-               
+            
         }
     }
-
+    
     private void MoveToJail(Players p){
         GUI.removeCar(p.getPosition(),p.name());
         GUI.setCar(11,p.name());
@@ -139,7 +139,7 @@ public class Controller{
         for(int i=1;i<=arr.length;i++) System.out.println("\t"+(i-1)+" : "+arr[i-1]+",");
         System.out.println("]");
     }
-
+    
     private void DEAD(){
         Ownable O;
         String sell;
@@ -183,46 +183,7 @@ public class Controller{
             }
         }
         
-        /*
-        int g=0,n=this.F.getNumOwn(totalP[turn]);
-        String[] arrr=this.F.getOwn(totalP[turn]);
-        Fields[] Field=new FieldHandler().GetArray();
-        if(n>0) for(int i=1;i<=n;i++) g+=(int)(Field[this.con.FieldToNum(arrr[i-1])].price()/2);
-        if(g+totalP[turn-1].getMoney()>0) but=GUI.getUserButtonPressed(Lang.get("BANKEROT"),Lang.get("Y"),Lang.get("N"));
-        else but=Lang.get("N");
-        if(but.equals(Lang.get("Y"))){
-            int num=this.con.getNumOwn(turn,ARR);
-            String[] ars;
-            String sell;
-            for(int i=1;i<=num;i++){
-                ars=this.con.getOwnSell(turn,ARR);
-                sell=GUI.getUserSelection(Lang.get("SAELGEHVAD"),ars);
-                for(int asnd=1;asnd<=ars.length;asnd++){
-                    if(ars[asnd-1]==sell){
-                        sell=this.con.getOwn(turn,ARR)[asnd-1];
-                        break;
-                    }
-                }
-//                sell=sell.substring(0,sell.lastIndexOf(" "));
-                ARR.put(sell,0);
-                this.con.Sell(sell,totalP,turn);
-                if(i==num) break;
-                if(totalP[turn-1].getMoney()>=0){
-                    but=GUI.getUserButtonPressed(Lang.get("FLERE"),Lang.get("Y"),Lang.get("N"));
-                    if(but.equals(Lang.get("N"))) break;
-                }
-            }
-            this.con.FixFleet(totalP,ARR);
-        }
-        else{
-            GUI.removeAllCars(totalP[turn-1].name());
-            if(this.players-1-this.DeadPlayers==1){
-                this.CT();
-                break;
-            }
-            else this.DeadPlayers++;
-        }
-        */
+        
     }
     
     /**
@@ -303,7 +264,7 @@ public class Controller{
      */
     private void PreGame(){
         this.Board.createBoard(this.Lang);
-//        this.setLang();
+        //        this.setLang();
         if(this.TEST==0)
         {
             this.players=Integer.parseInt(GUI.getUserSelection(this.Lang.get("AS2"),"2","3","4","5","6"));
