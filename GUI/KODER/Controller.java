@@ -17,7 +17,7 @@ public class Controller{
     private FieldHandler F=new FieldHandler(); // Opretter et nyt objkekt
     private int DELAY=600;
     private String[] colors={Lang.get("F1"),Lang.get("F2"),Lang.get("F3"),Lang.get("F4"),Lang.get("F5"),Lang.get("F6")};
-    private final int TEST=0;
+    private final int TEST=14;
     private final int TEST_PLAYERS=2;
     private boolean firstR=true;
     
@@ -31,8 +31,10 @@ public class Controller{
         this.DELAY=0;
         Test test=new Test();
         if(this.TEST==12) test.TestSell(totalP[turn],F);
+        else if(this.TEST==14) test.TestGround(totalP[0],F);
+
     }
-    
+  
     /**
      * Starter spillet. (While-loopet)
      */

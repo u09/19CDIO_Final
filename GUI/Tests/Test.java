@@ -38,6 +38,8 @@ public class Test {
         // test til 10% tax
         else if(TEST==12) dice=new int[][]{{20,21},{19,21},{1,1},{20,21},{0,0}};
         else if(TEST==13) dice=new int[][]{{5,4},{5,4},{3,1},{3,1},{0,0}};
+        //test til dobbelt leje når man ejer alle grunde med samme farve
+        else if(TEST==14) dice=new int[][]{{5,1},{5,1},{0,0}};
         else dice=new int[][]{{0,0}};
         return dice[i];
     }
@@ -45,6 +47,18 @@ public class Test {
     public void TestSell(Players p, FieldHandler f) {
         p.remove(120000);
         Ownable O;
+        for(int i=1;i<=40;i++){
+            if(f.Field[i-1] instanceof Ownable){
+                O=(Ownable)f.Field[i-1];
+                O.setOwner(p);
+                GUI.setOwner(i,p.name());
+            }
+        }
+    }
+    
+    public void TestGround(Players p, FieldHandler f){
+        Ownable O;
+        
         for(int i=1;i<=40;i++){
             if(f.Field[i-1] instanceof Ownable){
                 O=(Ownable)f.Field[i-1];

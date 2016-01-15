@@ -36,7 +36,7 @@ public class Territory extends Ownable {
     public boolean getOwnedBy() {
         boolean colorsOwned = true;
         int[] sameColor = TC.GetOtherGrounds();
-        for (int i = 0; i <= sameColor.length - 1; i++) {
+            for (int i = 0; i <= sameColor.length - 1; i++) {
             if (TC.getOwner(sameColor[i]) != this.owner.getPlayer())
                 colorsOwned = false;
         }
