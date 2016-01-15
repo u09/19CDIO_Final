@@ -22,7 +22,7 @@ public class Test {
         else if(TEST==3) dice=new int[][]{{1,2},{0,0}};
         //tester ???
         else if(TEST==4) dice=new int[][]{{15,15},{21,19},{1,2},{19,21},{1,2},{21,19},{2,2},{21,19},{0,0}};
-        //tester ???
+        //tester fleet
         else if(TEST==5) dice=new int[][]{{2,3},{2,3},{4,6},{4,6},{0,0}};
         //tester ???
         else if(TEST==6) dice=new int[][]{{21,19},{2,1},{2,1},{0,0}};
@@ -40,6 +40,8 @@ public class Test {
         else if(TEST==13) dice=new int[][]{{5,4},{5,4},{3,1},{3,1},{0,0}};
         //test til dobbelt leje nÃ¥r man ejer alle grunde med samme farve
         else if(TEST==14) dice=new int[][]{{5,1},{5,1},{0,0}};
+        // Tester 3 ens slag til fængsel?
+        else if(TEST==15) dice=new int [][]{{6,6},{6,6},{6,6},{2,1},{6,2},{2,3},{2,1},{0,0}};
         else dice=new int[][]{{0,0}};
         return dice[i];
     }

@@ -23,7 +23,4 @@ public class Labor_camp extends Ownable{
         else this.rent=sum*rent;
     }
 
-    public void landOnField(Players player) {
-        
-    }
 }
