@@ -5,7 +5,6 @@ public class TerritorysController {
     private boolean[] House={false,false,false,false,false};
     private String col;
     private FieldHandler F=new FieldHandler();
-    
     private int id;
     
     public TerritorysController(int id,String color,int[] ar){
@@ -44,9 +43,9 @@ public class TerritorysController {
             if(F.Field[i-1] instanceof Territory){
                 T=(Territory)F.Field[i-1];
                 if(T.getColour()==this.col){
-                    if(A==0) A=T.getId();
-                    else if(B==0) B=T.getId();
-                    else C=T.getId();
+                    if(A==0) A=i;
+                    else if(B==0) B=i;
+                    else C=i;
                 }
             }
         }
@@ -63,9 +62,9 @@ public class TerritorysController {
     }
     
     public int getOwner(int owner){
-        
         Ownable O=(Ownable)F.Field[owner];
-        return O.getOwner().getPlayer();
+        if(O.getOwner()!=null) return O.getOwner().getPlayer();
+        else return -1;
     }
     
     public boolean[] giveHouses() {

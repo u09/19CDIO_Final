@@ -33,13 +33,10 @@ public class Territory extends Ownable {
         return TC.giveHouses();
     }
     
-    public boolean getOwnedBy() {
-        boolean colorsOwned = true;
-        int[] sameColor = TC.GetOtherGrounds();
-            for (int i = 0; i <= sameColor.length - 1; i++) {
-            if (TC.getOwner(sameColor[i]) != this.owner.getPlayer())
-                colorsOwned = false;
-        }
+    public boolean getOwnedBy(){
+        boolean colorsOwned=true;
+        int[] sameColor=TC.GetOtherGrounds();
+        for(int i=1;i<=sameColor.length;i++) if(TC.getOwner(sameColor[i-1]-1)!=this.owner.getPlayer()) colorsOwned=false;
         return colorsOwned;
     }
 }
