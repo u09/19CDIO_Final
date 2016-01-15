@@ -56,6 +56,33 @@ public class Lang {
         Danish.put("iFængselT",     "Kast med terninger");
         Danish.put("PrøvL",         "Vil du prøve lykken?");
         
+        Danish.put("PrøvLRyk1",     "Ryk frem til START");
+        Danish.put("PrøvLRyk2",     "Ryk tre felter tilbage");
+        Danish.put("PrøvLRyk3",     "Ryk frem til Grønningen. Hvis De passerer START, indkasser da KR.4000.");
+        Danish.put("PrøvLRyk4",     "Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START indkasserer De IKKE KR. 4000.");
+        Danish.put("PrøvLRyk5",     "Ryk frem til Frederiksberg Allé. Hvis De passerer START indkasser KR. 4000.");
+        Danish.put("PrøvLRyk6",     "Tag med den nærmeste færge - Flyt brikken frem, og hvis De passerer START indkasser da KR. 4000.");
+        Danish.put("PrøvLRyk7",     "Tag ind på Rådhuspladsen.");
+        Danish.put("PrøvLRyk8",     "Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer START indkasserer De IKKE KR. 4000.");
+        
+        Danish.put("PrøvLPay1",     "Du har købt ØL derfor skal du betale 300KR til banken");
+        Danish.put("PrøvLPay2",     "De har kørt frem for FULD STOP. Betal 1000KR i bøde");
+        Danish.put("PrøvLPay3",     "Betal 3000KR for reparation af deres vogn");
+        Danish.put("PrøvLPay4",     "Betal 3000KR for reparation af deres vogn");
+        Danish.put("PrøvLPay5",     "De har modtaget deres tandlæge regning. Betal 2000KR");
+        Danish.put("PrøvLPay6",     "De har været en tur i udlandet og haft for mange cigaretter med hjem. Betal 200KR i told");
+        
+        Danish.put("PrøvLRec1",     "Grundet dyrtiden har De fået gangeforhøjelse. Modtag 1000KR");
+        Danish.put("PrøvLRec2",     "De har vundet i Klasselotteriet. Modtag  500 KR.");
+        Danish.put("PrøvLRec3",     "Kommunen har eftergivet et kvartals. Hæv i banken 3000KR");
+        Danish.put("PrøvLRec4",     "De modtager Derers aktieudbytte. Modtag 1000 KR af banken.");
+        Danish.put("PrøvLRec5",     "Deres præmieobligation er kommet ud. De modtager 1000 KR af banken.");
+        Danish.put("PrøvLRec6",     "Modtag udbytte af Deres aktier 1000 KR");
+        Danish.put("PrøvLRec7",     "De havde enrække med elleve rigtige i tipning. Modtag 1000 KR.");
+        Danish.put("PrøvLRec8",     "Værdien af egen avl fra nyttehaven udgør 200 KR, som De modtager af banken");
+        Danish.put("PrøvLRec9",     "Modtag udbytte af Deres aktier 1000 KR.");
+        Danish.put("PrøvLRec10",     "Deres præmieobligation er kommet ud. De modtager 1000KR. af banken");
+        
         if (input == "DA") return Danish;
         else return Danish;
         
