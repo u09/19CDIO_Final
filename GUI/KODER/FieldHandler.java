@@ -72,8 +72,4 @@ public class FieldHandler{
         return 0;
     }
     
-    public String[] getNameOwn(Players player){
-        
-        return null;
-    }
 }
