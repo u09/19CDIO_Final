@@ -1,6 +1,11 @@
-package KODER;
+package FieldTypes;
 
 import java.util.Map;
+import KODER.Fields;
+import KODER.GUI;
+import KODER.Lang;
+import KODER.LuckController;
+import KODER.Players;
 
 public class Luck extends Fields {
     private final Map<String, String> Lang=new Lang().lang("DA");

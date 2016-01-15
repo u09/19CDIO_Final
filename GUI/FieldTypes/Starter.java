@@ -1,4 +1,7 @@
-package KODER;
+package FieldTypes;
+
+import KODER.Fields;
+import KODER.Players;
 
 public class Starter extends Fields{
     

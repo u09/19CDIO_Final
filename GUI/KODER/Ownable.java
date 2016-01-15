@@ -1,6 +1,7 @@
 package KODER;
 
 import java.util.Map;
+import FieldTypes.Jail;
 
 public abstract class Ownable extends Fields {
     protected Players owner;

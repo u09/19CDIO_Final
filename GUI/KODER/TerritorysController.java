@@ -1,37 +1,16 @@
 package KODER;
 
+import FieldTypes.Territory;
+
 public class TerritorysController {
     private int[] price;
-    private boolean[] House={false,false,false,false,false};
     private String col;
     private FieldHandler F=new FieldHandler();
     private int id;
     
-    public TerritorysController(int id,String color,int[] ar){
+    public TerritorysController(int id,String color){
         this.col=color;
-        this.price=ar;
         this.id=id;
-    }
-    
-    public void BuyH(Players p){
-        boolean check=CheckOtherGrounds(p);
-    }
-
-    private boolean CheckOtherGrounds(Players p) {
-        int[] arr=GetOtherGrounds();
-        int n=getNumH(2);
-        for(int i=1;i<=arr.length;i++){
-            
-        }
-        return false;
-    }
-
-    private int getNumH(int id) {
-        int n=0;
-        Territory T=(Territory)F.Field[id];
-        T.GetHouse();
-        for(int i=1;i<=T.GetHouse().length;i++) if(T.GetHouse()[i-1]==true) n++;
-        return n;
     }
 
     public int[] GetOtherGrounds() {
@@ -65,9 +44,5 @@ public class TerritorysController {
         Ownable O=(Ownable)F.Field[owner];
         if(O.getOwner()!=null) return O.getOwner().getPlayer();
         else return -1;
-    }
-    
-    public boolean[] giveHouses() {
-        return this.House;
     }
 }

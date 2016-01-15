@@ -1,6 +1,9 @@
-package KODER;
+package FieldTypes;
 
 import java.util.Map;
+import KODER.FieldHandler;
+import KODER.Ownable;
+import KODER.Players;
 
 public class Fleet extends Ownable{
     private int rent;

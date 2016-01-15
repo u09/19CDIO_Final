@@ -1,15 +1,17 @@
-package KODER;
+package FieldTypes;
+
+import KODER.Ownable;
+import KODER.Players;
+import KODER.TerritorysController;
 
 public class Territory extends Ownable {
     private int rent;
     private TerritorysController TC;
     
-    public Territory(int id, String name, String Colour, int price, int rent,
-        int IH, int IIH, int IIIH, int IVH, int HO, int BH) {
+    public Territory(int id, String name, String Colour, int price, int rent) {
         super(name, price);
         this.rent = rent;
-        TC = new TerritorysController(id, Colour,
-            new int[] { IH, IIH, IIIH, IVH, HO });
+        TC = new TerritorysController(id, Colour);
     }
     
     @Override
@@ -23,9 +25,6 @@ public class Territory extends Ownable {
     
     public int getId() {
         return TC.getId();
-    }
-    public boolean[] GetHouse() {
-        return TC.giveHouses();
     }
     
     public boolean getOwnedBy(){

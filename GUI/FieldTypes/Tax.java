@@ -1,6 +1,12 @@
-package KODER;
+package FieldTypes;
 
 import java.util.Map;
+import KODER.FieldHandler;
+import KODER.Fields;
+import KODER.GUI;
+import KODER.Lang;
+import KODER.Ownable;
+import KODER.Players;
 
 public class Tax extends Fields{ // forlænger klasse med en anden klasse
     private int tax;

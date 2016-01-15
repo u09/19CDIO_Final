@@ -1,4 +1,9 @@
-package KODER;
+package FieldTypes;
+
+import KODER.Dicecup;
+import KODER.FieldHandler;
+import KODER.Ownable;
+import KODER.Players;
 
 public class Labor_camp extends Ownable{
     private int rent;
