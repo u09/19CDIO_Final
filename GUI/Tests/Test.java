@@ -47,7 +47,7 @@ public class Test {
     }
 
     public void TestSell(Players p, FieldHandler f) {
-        p.remove(120000);
+        p.remove(70000);
         Ownable O;
         for(int i=1;i<=40;i++){
             if(f.Field[i-1] instanceof Ownable){
