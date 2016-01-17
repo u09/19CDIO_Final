@@ -53,7 +53,7 @@ public class Controller{
             if(J.isJailed(turn)) this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             
             if(this.TEST!=0 && new Test().TestDice(TI,TEST)[0]!=0 && new Test().TestDice(TI,TEST)[1]!=0) D=new Test().TestDice(TI,TEST);
-            else if(this.TEST!=0 && (new Test().TestDice(TI,TEST)[0]==0 || new Test().TestDice(TI,TEST)[1]==0)) break;
+            else if(this.TEST!=0 && (new Test().TestDice(TI,TEST)[0]==0 && new Test().TestDice(TI,TEST)[1]==0)) break;
             else D=Dice.Throw();
             GUI.setDice(D[0],D[1]);
             System.out.print("Spiller"+(turn+1)+" slog {"+D[0]+";"+D[1]+"}");
