@@ -49,8 +49,8 @@ public class Test {
         return dice[i];
     }
 
-    public void TestSell(Players p) {
-        p.remove(120000);
+    public void TestSell(Players p){
+        p.remove(70000);
         Ownable O;
         for(int i=1;i<=40;i++){
             if(FieldHandler.Field[i-1] instanceof Ownable){
