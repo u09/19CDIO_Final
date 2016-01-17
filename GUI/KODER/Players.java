@@ -115,11 +115,11 @@ public class Players {
      * @param move
      * @param delay
      */
-    public void move(int move,int delay,FieldHandler F) {
+    public void move(int move,int delay) {
         sleep(delay*2);
         for(int i=1;i<=move;i++){
             GUI.removeAllCars(name);
-            if(this.position<F.Field.length) GUI.setCar(++this.position,name);
+            if(this.position<FieldHandler.Field.length) GUI.setCar(++this.position,name);
             else{
                 position=1;
                 GUI.setCar(position,name);

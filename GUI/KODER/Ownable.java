@@ -43,7 +43,7 @@ public abstract class Ownable extends Fields {
             Jail J = new Jail(p.name());
             if(J.isJailed(this.owner.getPlayer())==false){
                 if(this.owner.name()!=p.name()){
-                    GUI.showMessage(Lang.get("BETAL"));
+                    GUI.showMessage(Lang.get("BETAL")+getRent(p)+Lang.get("TIL")+p.name());
                     p.remove(getRent(p));
                     this.owner.add(getRent(p));   
                 }

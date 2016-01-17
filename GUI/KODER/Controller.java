@@ -1,6 +1,5 @@
 package KODER;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
 import FieldTypes.Jail;
@@ -16,9 +15,10 @@ public class Controller{
     private final Map<String, String> Lang=new Lang().lang("DA");// Initiallisere objekt
     private GameBoard Board=new GameBoard(); // initiallisere objekt
     private FieldHandler F=new FieldHandler(); // Opretter et nyt objkekt
-    private int DELAY=600;
+    private int DELAY=0;
     private String[] colors={Lang.get("F1"),Lang.get("F2"),Lang.get("F3"),Lang.get("F4"),Lang.get("F5"),Lang.get("F6")};
-    private final int TEST=15;
+    private String[] type={Lang.get("T1"),Lang.get("T2"),Lang.get("T3"),Lang.get("T4")};
+    private final int TEST=0;
     private final int TEST_PLAYERS=2;
     private boolean firstR=true;
     
@@ -31,9 +31,9 @@ public class Controller{
     private void Test(){
         this.DELAY=0;
         Test test=new Test();
-        if(this.TEST==12) test.TestSell(totalP[turn],F);
-        else if(this.TEST==14) test.TestGround(totalP[0],F);
-
+        if(this.TEST==12) test.TestSell(totalP[turn]);
+        else if(this.TEST==14) test.TestGround(totalP[0]);
+        else if(this.TEST==16) test.Test16(totalP);
     }
   
     /**
@@ -44,19 +44,18 @@ public class Controller{
         int[] D;
         int TI=-1;
         int ens=0;
-        LuckController LC=new LuckController();
-        Jail J=(Jail) F.Field[10];
+        Jail J=(Jail) FieldHandler.Field[10];
         while(true){
             TI++;
-            GUI.getUserButtonPressed(this.Lang.get("KT"),"OK");
+            GUI.getUserButtonPressed(this.Lang.get("KT")+totalP[turn].name(),"OK");
             
-            if(J.isJailed(turn)) this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
+            if(J.isJailed(turn)) FieldHandler.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             
             if(this.TEST!=0 && new Test().TestDice(TI,TEST)[0]!=0 && new Test().TestDice(TI,TEST)[1]!=0) D=new Test().TestDice(TI,TEST);
             else if(this.TEST!=0 && (new Test().TestDice(TI,TEST)[0]==0 || new Test().TestDice(TI,TEST)[1]==0)) break;
             else D=Dice.Throw();
             GUI.setDice(D[0],D[1]);
-            System.out.print("Spiller"+(turn+1)+" slog {"+D[0]+";"+D[1]+"}");
+            System.out.print("Spiller"+(turn+1)+" slog {"+D[0]+";"+D[1]+"}"+" ("+totalP[turn].getPosition()+"->"+((D[0]+D[1]+totalP[turn].getPosition())%40)+")\t\t");
             
             if(D[0]==D[1] && ens==2){
                 ens=0;
@@ -80,15 +79,15 @@ public class Controller{
                 }
             }
             
-            totalP[this.turn].move(D[0]+D[1],this.DELAY,F);
+            totalP[this.turn].move(D[0]+D[1],this.DELAY);
             
             CheckMoneyStart(totalP[turn],D);
             
-            this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
+            FieldHandler.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             
-            if(LC.LOF){
-                LC.LOF=false;
-                this.F.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
+            if(LuckController.LOF){
+                LuckController.LOF=false;
+                FieldHandler.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             }
             if((D[0]!=D[1] && !totalP[turn].dead()) || (J.Nthrows(turn)==0 && J.isJailed(turn)) || CheckJail){
                 this.CT();
@@ -100,6 +99,7 @@ public class Controller{
                 if(totalP[turn].dead()){
                     ens=0;
                     this.CT();
+                    if(CheckWin()) break;
                 }
             }
             else ens++;
@@ -111,34 +111,21 @@ public class Controller{
         GUI.close();
     }
     
-    private void CheckMoneyStart(Players p,int[] D) {
-        
+    private boolean CheckWin(){
+        if(this.players-this.DeadPlayers==1) return true;
+        return false;
+    }
+
+    private void CheckMoneyStart(Players p,int[] D){
         int f =p.getPosition()-(D[0]+D[1]);
-        if(f<=1 && p.getPosition()!=1 && firstR==false){
-            p.add(4000);
-            
-        }
+        if(f<=1 && p.getPosition()!=1 && firstR==false) p.add(4000);
     }
     
     private void MoveToJail(Players p){
         GUI.removeCar(p.getPosition(),p.name());
         GUI.setCar(11,p.name());
         p.setPosition(31);
-        this.F.Field[p.getPosition()-1].landOnField(p);
-    }
-    
-    private void printArr(int[] arr){
-        System.out.println("Array");
-        System.out.println("[");
-        for(int i=1;i<=arr.length;i++) System.out.println("\t"+(i-1)+" : "+arr[i-1]+",");
-        System.out.println("]");
-    }
-    
-    private void printArr(String[] arr){
-        System.out.println("Array");
-        System.out.println("[");
-        for(int i=1;i<=arr.length;i++) System.out.println("\t"+(i-1)+" : "+arr[i-1]+",");
-        System.out.println("]");
+        FieldHandler.Field[p.getPosition()-1].landOnField(p);
     }
     
     private void DEAD(){
@@ -147,17 +134,18 @@ public class Controller{
         int p=0;
         int[] n=F.getOwn(totalP[turn]);
         for(int i=1;i<=n.length;i++){
-            O=(Ownable)F.Field[n[i-1]-1];
+            O=(Ownable)FieldHandler.Field[n[i-1]-1];
             p+=O.getPrice()/2;
         }
         
         if(totalP[turn].getMoney()+p<0){
             for(int i=1;i<=n.length;i++){
-                O=(Ownable)F.Field[n[i-1]-1];
+                O=(Ownable)FieldHandler.Field[n[i-1]-1];
                 O.setOwner(null);
                 GUI.removeOwner(n[i-1]);
             }
             GUI.removeAllCars(totalP[turn].name());
+            this.DeadPlayers++;
         }
         else{
             String[] ar;
@@ -168,31 +156,23 @@ public class Controller{
                 n=F.getOwn(totalP[turn]);
                 ar=new String[n.length];
                 for(int i=1;i<=n.length;i++){
-                    O=(Ownable)F.Field[n[i-1]-1];
+                    O=(Ownable)FieldHandler.Field[n[i-1]-1];
                     ar[i-1]=O.getName()+" ("+O.getPrice()/2+")";
                 }
                 sell=GUI.getUserSelection(Lang.get("SAELGEHVAD"),ar);
-                if(sell.substring(sell.length()-7,sell.length()-6).equals(" ")) name=sell.substring(0,sell.length()-7);
+                if(sell.substring(sell.length()-7,sell.length()-6).equals(" "))
+                    name=sell.substring(0,sell.length()-7);
                 else name=sell.substring(0,sell.length()-6);
                 id=F.nameToNum(name);
-                O=(Ownable)F.Field[id-1];
+                O=(Ownable)FieldHandler.Field[id-1];
                 O.setOwner(null);
                 GUI.removeOwner(id);
                 totalP[turn].add(O.getPrice()/2);
-                if(totalP[turn].getMoney()>=0 && n.length>1) check=GUI.getUserButtonPressed(Lang.get("FLERE"),Lang.get("Y"),Lang.get("N"));
+                if(totalP[turn].getMoney()>=0 && n.length>1)
+                    check=GUI.getUserButtonPressed(Lang.get("FLERE"),Lang.get("Y"),Lang.get("N"));
                 if(check.equals(Lang.get("N")) || n.length==1) break;
             }
         }
-        
-        
-    }
-    
-    /**
-     * Returnerer positionen af den aktuelle spillers position
-     * @return 1-22
-     */
-    private int position(){
-        return totalP[this.turn].getPosition();
     }
     
     /**
@@ -209,8 +189,7 @@ public class Controller{
      */
     private void AddPlayers(){
         boolean check=true;
-        String name;
-        String col;
+        String name,col,tyype;
         
         for(int i=1;i<=this.players;i++){
             if(check) name=GUI.getUserString(Lang.get("NAME")+i);
@@ -228,14 +207,9 @@ public class Controller{
             }
             if(!check) continue;
             col=GUI.getUserSelection(this.Lang.get("Chose_Color"),this.colors);
+            tyype=GUI.getUserSelection(this.Lang.get("Chose_Type"),this.type);
             this.colors=removeElement(this.colors,Arrays.asList(this.colors).indexOf(col));
-            totalP[i-1]=new Players(name,col,
-                GUI.getUserSelection(this.Lang.get("Chose_Type"),
-                    this.Lang.get("T1"),
-                    this.Lang.get("T2"),
-                    this.Lang.get("T3"),
-                    this.Lang.get("T4")),
-                Lang,i-1);
+            totalP[i-1]=new Players(name,col,tyype,Lang,i-1);
         }
     }
     
@@ -253,19 +227,10 @@ public class Controller{
     }
     
     /**
-     * Sætter subtexten for GUI'en
-     */
-    private void setLang(){
-        for(int i=1;i<=41;i++) GUI.setSubText(i,"");
-        for(int i=1;i<=40;i++) GUI.setSubText(i,"");
-    }
-    
-    /**
      * Sætter sproget for boardet og antal spillere
      */
     private void PreGame(){
         this.Board.createBoard(this.Lang);
-        //        this.setLang();
         if(this.TEST==0)
         {
             this.players=Integer.parseInt(GUI.getUserSelection(this.Lang.get("AS2"),"2","3","4","5","6"));
@@ -275,12 +240,12 @@ public class Controller{
         else
         {
             String[][] str={
-                {"Test1",this.Lang.get("F1"),this.Lang.get("T1")},
-                {"Test2",this.Lang.get("F2"),this.Lang.get("T1")},
-                {"Test3",this.Lang.get("F3"),this.Lang.get("T1")},
-                {"Test4",this.Lang.get("F4"),this.Lang.get("T1")},
-                {"Test5",this.Lang.get("F5"),this.Lang.get("T1")},
-                {"Test6",this.Lang.get("F6"),this.Lang.get("T1")}
+                {"Test1",colors[0],type[0]},
+                {"Test2",colors[1],type[0]},
+                {"Test3",colors[2],type[0]},
+                {"Test4",colors[3],type[0]},
+                {"Test5",colors[4],type[0]},
+                {"Test6",colors[5],type[0]}
             };
             this.players=this.TEST_PLAYERS;
             this.totalP=new Players[this.players];

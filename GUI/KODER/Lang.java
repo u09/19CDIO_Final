@@ -18,6 +18,7 @@ public class Lang {
         Danish.put("LC_Check",      "100 x terningernes værdi");
         Danish.put("LP",            "Du er landet på ");
         Danish.put("BETAL",         "Du skal betale ");
+        Danish.put("TIL",           " til ");
         Danish.put("BE",            ", og du skal betale ");
         Danish.put("TS",            ", til ");
         Danish.put("HA",            ", og du skal have ");

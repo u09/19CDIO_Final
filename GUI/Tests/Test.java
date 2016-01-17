@@ -1,6 +1,5 @@
 package Tests;
 
-import java.util.Map;
 import KODER.FieldHandler;
 import KODER.Ownable;
 import KODER.Players;
@@ -40,33 +39,41 @@ public class Test {
         else if(TEST==13) dice=new int[][]{{5,4},{5,4},{3,1},{3,1},{0,0}};
         //test til dobbelt leje når man ejer alle grunde med samme farve
         else if(TEST==14) dice=new int[][]{{5,1},{5,1},{0,0}};
-        // Tester 3 ens slag til f�ngsel?
+        // Tester 3 ens slag til f�ngsel?
         else if(TEST==15) dice=new int [][]{{6,6},{6,6},{6,6},{2,1},{6,2},{2,3},{2,1},{0,0}};
+        //Tester om en spiller kan vinde
+        else if(TEST==16) dice=new int [][]{{2,2},{2,2},{0,0}};
+        //Tester om den resetter luckcards når den når maksimum
+        else if(TEST==17) dice=new int [][]{{6,1},{6,1},{6,1},{0,0}};
         else dice=new int[][]{{0,0}};
         return dice[i];
     }
 
-    public void TestSell(Players p, FieldHandler f) {
+    public void TestSell(Players p) {
         p.remove(120000);
         Ownable O;
         for(int i=1;i<=40;i++){
-            if(f.Field[i-1] instanceof Ownable){
-                O=(Ownable)f.Field[i-1];
+            if(FieldHandler.Field[i-1] instanceof Ownable){
+                O=(Ownable)FieldHandler.Field[i-1];
                 O.setOwner(p);
                 GUI.setOwner(i,p.name());
             }
         }
     }
     
-    public void TestGround(Players p, FieldHandler f){
+    public void TestGround(Players p){
         Ownable O;
-        
         for(int i=1;i<=40;i++){
-            if(f.Field[i-1] instanceof Ownable){
-                O=(Ownable)f.Field[i-1];
+            if(FieldHandler.Field[i-1] instanceof Ownable){
+                O=(Ownable)FieldHandler.Field[i-1];
                 O.setOwner(p);
                 GUI.setOwner(i,p.name());
             }
         }
+    }
+
+    public void Test16(Players[] p){
+        p[0].remove(30000);
+        p[1].remove(30000);
     }
 }

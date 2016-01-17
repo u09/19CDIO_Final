@@ -25,13 +25,12 @@ public class Tax extends Fields{ // forlænger klasse med en anden klasse
             String b = GUI.getUserButtonPressed(Lang.get("TAX_Check"), Lang.get("B4000"), Lang.get("B10"));
             if(b==Lang.get("B4000")) this.tax=4000;
             else{
-                FieldHandler f= new FieldHandler();
                 int EjendomSum = 0; 
                 Ownable O;
                 
-                for(int i=1;i<=f.Field.length;i++){
-                    if(f.Field[i-1] instanceof Ownable){
-                        O=(Ownable) f.Field[i-1];
+                for(int i=1;i<=FieldHandler.Field.length;i++){
+                    if(FieldHandler.Field[i-1] instanceof Ownable){
+                        O=(Ownable) FieldHandler.Field[i-1];
                         if(O.getOwner()!=null && O.getOwner().getPlayer()==p.getPlayer()) EjendomSum +=O.getPrice();
                     }
                 }

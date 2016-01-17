@@ -21,9 +21,8 @@ public class Labor_camp extends Ownable{
     private void setRent(int rent,Players p){
         Dicecup D=new Dicecup();
         int sum=D.sum();
-        FieldHandler f=new FieldHandler();
-        Ownable O=(Ownable)f.Field[12];
-        Ownable O2=(Ownable)f.Field[28];
+        Ownable O=(Ownable)FieldHandler.Field[12];
+        Ownable O2=(Ownable)FieldHandler.Field[28];
         if(O.getOwner()!=null && O.getOwner().name()==O2.getOwner().name()) this.rent=sum*rent*2;
         else this.rent=sum*rent;
     }

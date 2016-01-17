@@ -3,9 +3,7 @@ package KODER;
 import FieldTypes.Territory;
 
 public class TerritorysController {
-    private int[] price;
     private String col;
-    private FieldHandler F=new FieldHandler();
     private int id;
     
     public TerritorysController(int id,String color){
@@ -19,8 +17,8 @@ public class TerritorysController {
         int C=0;
         Territory T;
         for(int i=1;i<=40;i++){
-            if(F.Field[i-1] instanceof Territory){
-                T=(Territory)F.Field[i-1];
+            if(FieldHandler.Field[i-1] instanceof Territory){
+                T=(Territory)FieldHandler.Field[i-1];
                 if(T.getColour()==this.col){
                     if(A==0) A=i;
                     else if(B==0) B=i;
@@ -41,7 +39,7 @@ public class TerritorysController {
     }
     
     public int getOwner(int owner){
-        Ownable O=(Ownable)F.Field[owner];
+        Ownable O=(Ownable)FieldHandler.Field[owner];
         if(O.getOwner()!=null) return O.getOwner().getPlayer();
         else return -1;
     }

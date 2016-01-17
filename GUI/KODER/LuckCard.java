@@ -10,9 +10,10 @@ public class LuckCard {
     // 4000 kr. ved passering af start
     
     public LuckCard(String cardType, String cardText, int cardValue) {
-        type = cardType;
-        text = cardText;
-        value = cardValue;
+        this.type = cardType;
+        this.text = cardText;
+        this.value = cardValue;
+        this.luckFieldNum = 0;
     }
     
     public LuckCard(String type, String text, int value, int luckFieldNum) {
@@ -24,6 +25,7 @@ public class LuckCard {
     
     public void useCard(Players p) {
         // 3, 8, 18, 23, 34, 37
+        System.out.print(text);
         GUI.displayChanceCard(text);
         GUI.getUserButtonPressed("","OK");
         if (type == "Pay") p.remove(value);
@@ -38,13 +40,13 @@ public class LuckCard {
             else if(p.getPosition()==34) n=5;
             else n=6;
             
-            if(n>=luckFieldNum){
+            if(n>=luckFieldNum && luckFieldNum!=0){
                 p.setPosition(value);
                 GUI.setCar(value, p.name());
                 p.add(4000);
             }
             else if (type == "MoveBack"){
-                p.setPosition(p.getPosition() + value);
+                p.setPosition(p.getPosition()+value);
                 if(p.getPosition()==0) p.setPosition(40);
             }
             else if (type == "MoveToShip") {
