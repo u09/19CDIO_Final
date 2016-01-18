@@ -19,7 +19,7 @@ public class Test {
         else if(TEST==2) dice=new int[][]{{1,1},{1,1},{0,0}};
         //tester køb af hvidovrevej???
         else if(TEST==3) dice=new int[][]{{1,2},{0,0}};
-        //tester ???
+        //tester Jail
         else if(TEST==4) dice=new int[][]{{15,15},{21,19},{1,2},{19,21},{1,2},{21,19},{2,2},{21,19},{0,0}};
         //tester fleet
         else if(TEST==5) dice=new int[][]{{2,3},{2,3},{4,6},{4,6},{0,0}};
