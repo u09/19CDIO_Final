@@ -4,13 +4,18 @@ import java.util.Map;
 import FieldTypes.Jail;
 
 public abstract class Ownable extends Fields {
+    /* Noter til denne klasse:
+     * Protected betyder at variablen eller metoden kun kan tilgås fra den samme klasse eller fra en nedarvet klasse.
+     * super metoden sender variablen name videre til super klassen hvor den bliver brugt i konstruktøren.
+     * 
+     */ 
     protected Players owner;
     private int price;
     private final Map<String, String> Lang=new Lang().lang("DA");
     
     public Ownable(String name,int price){
         super(name);
-        this.setPrice(price);
+        setPrice(price);
     }
     
     public Players getOwner() {
@@ -41,7 +46,7 @@ public abstract class Ownable extends Fields {
         }
         else if(this.owner == null && p.getMoney()-this.price<0) GUI.showMessage(Lang.get("IKKE_NOK_PENGE"));
         else{
-            Jail J = new Jail(p.name());
+            Jail J = new Jail("");
             if(J.isJailed(this.owner.getPlayer())==false){
                 if(this.owner.name()!=p.name()){
                     GUI.showMessage(Lang.get("BETAL")+getRent(p)+Lang.get("TIL")+p.name());
@@ -53,5 +58,10 @@ public abstract class Ownable extends Fields {
             
     }
     
+    /**
+     * Den abstrakte metode for at få lejen til hvert Ownable felt. Denne metode specificeres i under hvert felt.
+     * @param p Object af Players
+     * @return
+     */
     public abstract int getRent(Players p);
-    }
+}

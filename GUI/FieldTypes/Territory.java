@@ -5,6 +5,10 @@ import KODER.Players;
 import KODER.TerritorysController;
 
 public class Territory extends Ownable {
+    /* Noter til denne klasse:
+     * getOwnedBy metoden kører igennem alle de veje med den samme farve og tjekker
+     * 
+     */ 
     private int rent;
     private TerritorysController TC;
     

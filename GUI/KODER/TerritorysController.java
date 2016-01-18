@@ -11,6 +11,10 @@ public class TerritorysController {
         this.id=id;
     }
 
+    /**
+     * 
+     * @return Returnerer et array med felter 1-40
+     */
     public int[] GetOtherGrounds() {
         int A=0;
         int B=0;
@@ -38,6 +42,10 @@ public class TerritorysController {
         return this.id;
     }
     
+    /**
+     * @param owner Feltets nummer 0-39
+     * @return
+     */
     public int getOwner(int owner){
         Ownable O=(Ownable)FieldHandler.Field[owner];
         if(O.getOwner()!=null) return O.getOwner().getPlayer();

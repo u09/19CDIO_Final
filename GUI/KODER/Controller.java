@@ -89,12 +89,16 @@ public class Controller{
                 LuckController.LOF=false;
                 FieldHandler.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             }
+            /* Første betingelse er hvis han ikke slår to ens og ikke er død. 
+             * Anden mulig betingelse er hvis han er i fængsel og har ikke slået med terningerne dvs. han er lige kommet ind i jail.
+             * Trejde mulig betingelse er CheckJail som er true når han lige er kommet ud af fængslet dvs. han skal ikke slå igen.
+             */
             if((D[0]!=D[1] && !totalP[turn].dead()) || (J.Nthrows(turn)==0 && J.isJailed(turn)) || CheckJail){
                 this.CT();
                 ens=0;
                 CheckJail=false;
             }
-            if(totalP[turn].dead()){
+            else if(totalP[turn].dead()){
                 this.DEAD();
                 if(totalP[turn].dead()){
                     ens=0;

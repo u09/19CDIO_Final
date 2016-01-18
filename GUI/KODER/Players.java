@@ -55,7 +55,7 @@ public class Players {
     }
     
     /**
-     * vi opretter en metode som returnere positionen
+     * Vi opretter en metode som returnere positionen
      * @return position 1-40
      */
     public int getPosition(){
@@ -69,7 +69,7 @@ public class Players {
         return this.player;
     }
     /**
-     * vi opretter metode til at betale fra en spiller til en anden spiller
+     * Vi opretter metode til at betale fra en spiller til en anden spiller
      * @param player
      * @param money
      */
@@ -86,7 +86,7 @@ public class Players {
         return this.money.getMoney();
     }
     /**
-     * metode som tilføjer penge i brugerens pengebeholdning
+     * Metode som tilføjer penge i brugerens pengebeholdning
      * @param money
      */
     public void add(int money){
@@ -103,7 +103,7 @@ public class Players {
     }
     
     /**
-     * metode som returner om spilleren er død
+     * Metode som returner om spilleren er død
      * @return trule/false
      */
     public boolean dead(){
