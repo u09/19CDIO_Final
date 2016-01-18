@@ -31,7 +31,7 @@ public abstract class Ownable extends Fields {
     
     @Override
     public void landOnField(Players p) {
-        if(this.owner == null){
+        if(this.owner == null && p.getMoney()-this.price>=0){
             String k = GUI.getUserButtonPressed(Lang.get("KG"), Lang.get("Y") , Lang.get("N"));
             if(k==Lang.get("Y")){
                 this.owner=p;
@@ -39,6 +39,7 @@ public abstract class Ownable extends Fields {
                 p.remove(getPrice());
             }
         }
+        else if(this.owner == null && p.getMoney()-this.price<0) GUI.showMessage(Lang.get("IKKE_NOK_PENGE"));
         else{
             Jail J = new Jail(p.name());
             if(J.isJailed(this.owner.getPlayer())==false){

@@ -56,6 +56,7 @@ public class Lang {
         Danish.put("iFængselB",     "Betal kr. 1000");
         Danish.put("iFængselT",     "Kast med terninger");
         Danish.put("PrøvL",         "Vil du prøve lykken?");
+        Danish.put("IKKE_NOK_PENGE","Du har ikke nok penge til at købe feltet.");
         
         Danish.put("PrøvLRyk1",     "Ryk frem til START");
         Danish.put("PrøvLRyk2",     "Ryk tre felter tilbage");
