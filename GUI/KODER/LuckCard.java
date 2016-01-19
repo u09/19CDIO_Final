@@ -35,12 +35,6 @@ public class LuckCard {
         if (type == "Pay") p.remove(value);
         // Modtage penge
         else if (type == "Receive") p.add(value);
-        // Passerer start
-        
-        if (type == "Pay") p.remove(value);
-        
-        else if (type == "Receive") p.add(value);
-        
         else {
             GUI.removeCar(p.getPosition(), p.name());
             int n;
@@ -51,6 +45,7 @@ public class LuckCard {
             else if(p.getPosition()==34) n=5;
             else n=6;
             
+            // Passerer start
             if(n>=luckFieldNum && luckFieldNum!=0){
                 p.setPosition(value);
                 GUI.setCar(value, p.name());
