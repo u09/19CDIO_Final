@@ -1,6 +1,5 @@
 package FieldTypes;
 
-import java.util.Map;
 import KODER.FieldHandler;
 import KODER.Ownable;
 import KODER.Players;
@@ -19,8 +18,7 @@ public class Fleet extends Ownable{
     }
     
     private void setRent(Players p){
-        FieldHandler f= new FieldHandler();
-        Ownable O[]={(Ownable) f.Field[5],(Ownable) f.Field[15],(Ownable) f.Field[25],(Ownable) f.Field[35]};
+        Ownable O[]={(Ownable) FieldHandler.Field[5],(Ownable) FieldHandler.Field[15],(Ownable) FieldHandler.Field[25],(Ownable) FieldHandler.Field[35]};
         int[] amountp = {0,0,0,0,0,0};
         int n=p.getPosition();
         

@@ -1,6 +1,5 @@
 package Tests;
 
-import java.util.Map;
 import KODER.FieldHandler;
 import KODER.Ownable;
 import KODER.Players;
@@ -20,7 +19,7 @@ public class Test {
         else if(TEST==2) dice=new int[][]{{1,1},{1,1},{0,0}};
         //tester køb af hvidovrevej???
         else if(TEST==3) dice=new int[][]{{1,2},{0,0}};
-        //tester ???
+        //tester Jail
         else if(TEST==4) dice=new int[][]{{15,15},{21,19},{1,2},{19,21},{1,2},{21,19},{2,2},{21,19},{0,0}};
         //tester fleet
         else if(TEST==5) dice=new int[][]{{2,3},{2,3},{4,6},{4,6},{0,0}};
@@ -40,33 +39,41 @@ public class Test {
         else if(TEST==13) dice=new int[][]{{5,4},{5,4},{3,1},{3,1},{0,0}};
         //test til dobbelt leje når man ejer alle grunde med samme farve
         else if(TEST==14) dice=new int[][]{{5,1},{5,1},{0,0}};
-        // Tester 3 ens slag til f�ngsel?
+        // Tester 3 ens slag til f�ngsel?
         else if(TEST==15) dice=new int [][]{{6,6},{6,6},{6,6},{2,1},{6,2},{2,3},{2,1},{0,0}};
+        //Tester om en spiller kan vinde
+        else if(TEST==16) dice=new int [][]{{2,2},{2,2},{0,0}};
+        //Tester om den resetter luckcards når den når maksimum
+        else if(TEST==17) dice=new int [][]{{6,1},{6,1},{6,1},{0,0}};
         else dice=new int[][]{{0,0}};
         return dice[i];
     }
 
-    public void TestSell(Players p, FieldHandler f) {
+    public void TestSell(Players p){
         p.remove(70000);
         Ownable O;
         for(int i=1;i<=40;i++){
-            if(f.Field[i-1] instanceof Ownable){
-                O=(Ownable)f.Field[i-1];
+            if(FieldHandler.Field[i-1] instanceof Ownable){
+                O=(Ownable)FieldHandler.Field[i-1];
                 O.setOwner(p);
                 GUI.setOwner(i,p.name());
             }
         }
     }
     
-    public void TestGround(Players p, FieldHandler f){
+    public void TestGround(Players p){
         Ownable O;
-        
         for(int i=1;i<=40;i++){
-            if(f.Field[i-1] instanceof Ownable){
-                O=(Ownable)f.Field[i-1];
+            if(FieldHandler.Field[i-1] instanceof Ownable){
+                O=(Ownable)FieldHandler.Field[i-1];
                 O.setOwner(p);
                 GUI.setOwner(i,p.name());
             }
         }
+    }
+
+    public void Test16(Players[] p){
+        p[0].remove(30000);
+        p[1].remove(30000);
     }
 }

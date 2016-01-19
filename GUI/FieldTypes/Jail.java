@@ -7,7 +7,11 @@ import KODER.Lang;
 import KODER.Players;
 
 public class Jail extends Fields {
-    
+    /* Noter til denne klasse:
+     * jailedPlayers bruges til at se om spillerne er fængslet, hvorfor der er 6.
+     * static betyder at variablen ikke ændrer sig når man laver et nyt objekt af den.
+     * Nthrows fortæller hvor mange gange hver spiller som sidder i fængsel har kastet.
+     */ 
     private static boolean[] jailedPlayers={false,false,false,false,false,false};
     private static int[] Nthrows={0,0,0,0,0,0};
     private final Map<String, String> Lang=new Lang().lang("DA");
@@ -19,8 +23,8 @@ public class Jail extends Fields {
     public void landOnField(Players p){
         if(p.getPosition()==11 && jailedPlayers[p.getPlayer()]==false) return;
         if(jailedPlayers[p.getPlayer()]==false){
-            GUI.setCar(11,p.name());
             GUI.removeCar(31,p.name());
+            GUI.setCar(11,p.name());
             p.setPosition(11);
             jailedPlayers[p.getPlayer()]=true;
         }
