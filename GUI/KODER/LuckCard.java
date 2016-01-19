@@ -2,10 +2,13 @@ package KODER;
 
 public class LuckCard {
     private String text;   // variabel til visning af tekst i guien
+    
     private String type;   // type så vi ved om der skal rykkes frem/tilbage,
     // betale til banken osv.
+    
     private int value;  // værdien som vi skal bruge til at rykke frem/tilbage
     // eller betale/modtage beløb osv
+    
     private int luckFieldNum; // variabel til at vide om spilleren skal modtage
     // 4000 kr. ved passering af start
     
@@ -28,11 +31,19 @@ public class LuckCard {
         System.out.print(text);
         GUI.displayChanceCard(text);
         GUI.getUserButtonPressed("","OK");
+<<<<<<< Updated upstream
         // Betale penge
         if (type == "Pay") p.remove(value);
         // Modtage penge
         else if (type == "Receive") p.add(value);
         // Passerer start
+=======
+        
+        if (type == "Pay") p.remove(value);
+        
+        else if (type == "Receive") p.add(value);
+        
+>>>>>>> Stashed changes
         else {
             GUI.removeCar(p.getPosition(), p.name());
             int n;
