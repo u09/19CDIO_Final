@@ -18,7 +18,7 @@ public class Controller{
     private int DELAY=0;
     private String[] colors={Lang.get("F1"),Lang.get("F2"),Lang.get("F3"),Lang.get("F4"),Lang.get("F5"),Lang.get("F6")};
     private String[] type={Lang.get("T1"),Lang.get("T2"),Lang.get("T3"),Lang.get("T4")};
-    private final int TEST=0;
+    private final int TEST=12;
     private final int TEST_PLAYERS=2;
     private boolean firstR=true;
     

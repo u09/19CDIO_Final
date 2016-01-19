@@ -33,8 +33,9 @@ public class Test {
         else if(TEST==9) dice=new int[][]{{1,2},{1,2},{0,0}};
         //tester Labor camp
         else if(TEST==10) dice=new int[][]{{5,7},{5,7},{9,7},{9,7}};
-        // test til 10% tax
-        else if(TEST==12) dice=new int[][]{{20,21},{19,21},{1,1},{20,21},{0,0}};
+        // test til til salg af grunde
+        else if(TEST==12) dice=new int[][]{{20,21},{0,0}};
+        // tester leje
         else if(TEST==13) dice=new int[][]{{5,4},{5,4},{3,1},{3,1},{0,0}};
         //test til dobbelt leje når man ejer alle grunde med samme farve
         else if(TEST==14) dice=new int[][]{{5,1},{5,1},{0,0}};
@@ -49,7 +50,7 @@ public class Test {
     }
 
     public void TestSell(Players p){
-        p.remove(70000);
+        p.remove(80000);
         Ownable O;
         for(int i=1;i<=40;i++){
             if(FieldHandler.Field[i-1] instanceof Ownable){
