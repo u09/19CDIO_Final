@@ -7,7 +7,7 @@ import java.util.Map;
 public class LuckController{
     private final static Map<String, String> Lang=new Lang().lang("DA");
     public static boolean LOF=false;
-    private int cardNum = -1;
+    private int cardNum = 4;
     
     public static LuckCard[] LuckCards={
         //Ryk frem/tilbage
@@ -41,7 +41,7 @@ public class LuckController{
     };
     
     public LuckController(){
-        Collections.shuffle(Arrays.asList(LuckCards));
+//        Collections.shuffle(Arrays.asList(LuckCards));
     }
     
     public void getLuckCard(Players p){

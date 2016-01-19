@@ -33,8 +33,6 @@ public class Test {
         else if(TEST==9) dice=new int[][]{{1,2},{1,2},{0,0}};
         //tester Labor camp
         else if(TEST==10) dice=new int[][]{{5,7},{5,7},{9,7},{9,7}};
-        // Tester noget
-        else if(TEST==11) dice=new int[][]{{20,16},{3,5},{2,1},{0,0}};
         // test til 10% tax
         else if(TEST==12) dice=new int[][]{{20,21},{19,21},{1,1},{20,21},{0,0}};
         else if(TEST==13) dice=new int[][]{{5,4},{5,4},{3,1},{3,1},{0,0}};

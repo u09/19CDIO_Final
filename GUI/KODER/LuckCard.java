@@ -46,20 +46,16 @@ public class LuckCard {
             else n=6;
             
             // Passerer start
-            if(n>=luckFieldNum && luckFieldNum!=0){
-                p.setPosition(value);
-                GUI.setCar(value, p.name());
-                p.add(4000);
-            }
+            if(n>=luckFieldNum && luckFieldNum!=0) p.add(4000);
             // Flytte 3 felter tilbage. Linje 53 er generelt at flytte 3 tilbage. 
             // Linje 54 er i forhold til at flytte 3 felter tilbage når man lander på første Prøv Lykken.
-            else if (type == "MoveBack"){
+            if (type == "MoveBack"){
                 p.setPosition(p.getPosition()+value);
                 if(p.getPosition()==0) p.setPosition(40);
             }
             // Rykke til fleet
             else if (type == "MoveToShip") {
-                if (p.getPosition() < 6 && p.getPosition() > 36) p.setPosition(6);
+                if (p.getPosition() < 6 || p.getPosition() > 36) p.setPosition(6);
                 else if (p.getPosition() > 6 && p.getPosition() < 16) p.setPosition(16);
                 else if (p.getPosition() > 16 && p.getPosition() < 26) p.setPosition(26);
                 else p.setPosition(36);
