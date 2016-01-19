@@ -31,19 +31,16 @@ public class LuckCard {
         System.out.print(text);
         GUI.displayChanceCard(text);
         GUI.getUserButtonPressed("","OK");
-<<<<<<< Updated upstream
         // Betale penge
         if (type == "Pay") p.remove(value);
         // Modtage penge
         else if (type == "Receive") p.add(value);
         // Passerer start
-=======
         
         if (type == "Pay") p.remove(value);
         
         else if (type == "Receive") p.add(value);
         
->>>>>>> Stashed changes
         else {
             GUI.removeCar(p.getPosition(), p.name());
             int n;
