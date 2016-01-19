@@ -74,6 +74,7 @@ public class Players {
      * @param money
      */
     public void pay(Players player,int money){
+        // Når vi siger this.remove, er det den omhandlende spiller der bliver fjernet penge fra.
         this.remove(money);
         player.add(money);
     }
