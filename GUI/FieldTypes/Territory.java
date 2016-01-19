@@ -5,14 +5,11 @@ import KODER.Players;
 import KODER.TerritorysController;
 
 public class Territory extends Ownable {
-<<<<<<< HEAD
-    //Definerer 2 forskellige variabler, med typerne int og TerritorysController
-=======
     /* Noter til denne klasse:
      * getOwnedBy metoden kører igennem alle de veje med den samme farve og tjekker
      * 
      */ 
->>>>>>> origin/master
+    //Definerer 2 forskellige variabler, med typerne int og TerritorysController
     private int rent;
     private TerritorysController TC;
     

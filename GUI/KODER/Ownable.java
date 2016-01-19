@@ -3,16 +3,13 @@ package KODER;
 import java.util.Map;
 import FieldTypes.Jail;
 
-public abstract class Ownable extends Fields {
-<<<<<<< HEAD
-    // Vi definerer en variabel af typen Players, som kan ses af hele pakken og alle arvede klasser(fra Fields) 
-=======
+public abstract class Ownable extends Fields{
     /* Noter til denne klasse:
      * Protected betyder at variablen eller metoden kun kan tilgås fra den samme klasse eller fra en nedarvet klasse.
      * super metoden sender variablen name videre til super klassen hvor den bliver brugt i konstruktøren.
      * 
-     */ 
->>>>>>> origin/master
+     */
+    // Vi definerer en variabel af typen Players, som kan ses af hele pakken og alle arvede klasser(fra Fields) 
     protected Players owner;
     // Definerer ny int variabel
     private int price;
@@ -26,12 +23,7 @@ public abstract class Ownable extends Fields {
     public Ownable(String name,int price){
         // vi henter "name" fra de forskellige klasser(felttyper), som extend'er ownable, og giver dem videre til superklassen Fields
         super(name);
-<<<<<<< HEAD
-        // vi henter prisen fra de forskellige klasser(felttyper), som extend'er ownable. De skal blive her og ikke videre
-        this.setPrice(price);
-=======
         setPrice(price);
->>>>>>> origin/master
     }
     
     public Players getOwner() {
@@ -52,12 +44,8 @@ public abstract class Ownable extends Fields {
     
     @Override
     public void landOnField(Players p) {
-<<<<<<< HEAD
         // Laver et if-statement, til at køre, hvis et felt ikke er ejet af nogen.
-        if(this.owner == null){
-=======
         if(this.owner == null && p.getMoney()-this.price>=0){
->>>>>>> origin/master
             String k = GUI.getUserButtonPressed(Lang.get("KG"), Lang.get("Y") , Lang.get("N"));
             // Hvis man vælger at købe det
             if(k==Lang.get("Y")){
@@ -69,26 +57,16 @@ public abstract class Ownable extends Fields {
                 p.remove(getPrice());
             }
         }
-<<<<<<< HEAD
+        else if(this.owner == null && p.getMoney()-this.price<0) GUI.showMessage(Lang.get("IKKE_NOK_PENGE"));
         // Hvis feltet er ejet
         else{
-            Jail J = new Jail(p.name());
-            // Hvis spilleren som ejer feltet ikke er fængslet
-=======
-        else if(this.owner == null && p.getMoney()-this.price<0) GUI.showMessage(Lang.get("IKKE_NOK_PENGE"));
-        else{
             Jail J = new Jail("");
->>>>>>> origin/master
+            // Hvis spilleren som ejer feltet ikke er fængslet
             if(J.isJailed(this.owner.getPlayer())==false){
                 // Og hvis nuværende spiller ikke ejer feltet han er landet på
                 if(this.owner.name()!=p.name()){
-<<<<<<< HEAD
-                    // Viser på GUI
-                    GUI.showMessage(Lang.get("BETAL"));
                     // Fjerner prisen på lejen fra spiller
-=======
                     GUI.showMessage(Lang.get("BETAL")+getRent(p)+Lang.get("TIL")+p.name());
->>>>>>> origin/master
                     p.remove(getRent(p));
                     // Ejeren af feltet får pengene
                     this.owner.add(getRent(p));   
@@ -98,15 +76,10 @@ public abstract class Ownable extends Fields {
             
     }
     
-<<<<<<< HEAD
-    /** laver en abstract metode, så alle de forskellige ownable klasser(felttyper), selv kan bestemme lejen
-     * @param p
-=======
     /**
      * Den abstrakte metode for at få lejen til hvert Ownable felt. Denne metode specificeres i under hvert felt.
      * @param p Object af Players
      * @return
->>>>>>> origin/master
      */
     public abstract int getRent(Players p);
 }
