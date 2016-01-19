@@ -48,7 +48,7 @@ public class Test {
         else dice=new int[][]{{0,0}};
         return dice[i];
     }
-
+    
     public void TestSell(Players p){
         p.remove(80000);
         Ownable O;
@@ -71,7 +71,7 @@ public class Test {
             }
         }
     }
-
+    
     public void Test16(Players[] p){
         p[0].remove(30000);
         p[1].remove(30000);
