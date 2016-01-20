@@ -15,10 +15,10 @@ public class Controller{
     private final Map<String, String> Lang=new Lang().lang("DA");// Initiallisere objekt
     private GameBoard Board=new GameBoard(); // initiallisere objekt
     private FieldHandler F=new FieldHandler(); // Opretter et nyt objkekt
-    private int DELAY=0;
+    private int DELAY=600;
     private String[] colors={Lang.get("F1"),Lang.get("F2"),Lang.get("F3"),Lang.get("F4"),Lang.get("F5"),Lang.get("F6")};
     private String[] type={Lang.get("T1"),Lang.get("T2"),Lang.get("T3"),Lang.get("T4")};
-    private final int TEST=0;
+    private final int TEST=18;
     private final int TEST_PLAYERS=2;
     private boolean firstR=true;
     
@@ -40,32 +40,38 @@ public class Controller{
      * Starter spillet. (While-loopet)
      */
     private void StartGame(){
-        boolean CheckJail=false;
-        int[] D;
-        int TI=-1;
-        int ens=0;
-        Jail J=(Jail) FieldHandler.Field[10];
+        boolean CheckJail=false;//Tjekker om spiller er jail
+        int[] D;//Dice
+        int TI=-1;//Hvor mange gange while-loopet kører
+        int ens=0;//Hvor mange gange man har slået 2 ens i træk
+        Jail J=(Jail) FieldHandler.Field[10];//Objekt af Jail
         while(true){
             TI++;
             GUI.getUserButtonPressed(this.Lang.get("KT")+totalP[turn].name(),"OK");
             
+            //Hvis han er i fængsel, kører vi landOnField før han slår
             if(J.isJailed(turn)) FieldHandler.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             
             if(this.TEST!=0 && new Test().TestDice(TI,TEST)[0]!=0 && new Test().TestDice(TI,TEST)[1]!=0) D=new Test().TestDice(TI,TEST);
             else if(this.TEST!=0 && (new Test().TestDice(TI,TEST)[0]==0 && new Test().TestDice(TI,TEST)[1]==0)) break;
             else D=Dice.Throw();
+            
             GUI.setDice(D[0],D[1]);
             System.out.print("Spiller"+(turn+1)+" slog {"+D[0]+";"+D[1]+"}"+" ("+totalP[turn].getPosition()+"->"+((D[0]+D[1]+totalP[turn].getPosition())%40)+")\t\t");
             
+            //Hvis han slår 2 ens, 3 gange i træk
             if(D[0]==D[1] && ens==2){
                 ens=0;
                 MoveToJail(totalP[turn]);
+                CT();
                 continue;
             }
             
             if(J.isJailed(turn)){
+                //Hvis terningerne ikke er ens
                 if(D[0]!=D[1]){
-                    if(J.Nthrows(turn)==3) J.payJail(totalP[turn]);
+                    //Hvis han har prøvet at slå sig ud af jail, 3 gange i træk
+                    if(J.Nthrows(turn)==3) J.payJail(totalP[turn]);//Tvunget betaling
                     else{
                         GUI.showMessage(Lang.get("Ikke2ens"));
                         this.CT();
@@ -73,39 +79,50 @@ public class Controller{
                     }
                 }
                 else{
+                    //Slår sig ud af jail, betaler 1000 og får 1000: 1000-1000=0
                     J.payJail(totalP[turn]);
                     totalP[turn].add(1000);
+                    //Sætter vi til true for at han ikke skal slå igen fordi han
+                    //Er kommet ud af jail.
                     CheckJail=true;
                 }
             }
             
+            //Bevæger spilleren
             totalP[this.turn].move(D[0]+D[1],this.DELAY);
             
+            //Tjekker om spiller har passeret start
             CheckMoneyStart(totalP[turn],D);
             
+            //Kører landOnField
             FieldHandler.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             
+            //Tjekker om man har trukket et move-kort
             if(LuckController.LOF){
                 LuckController.LOF=false;
                 FieldHandler.Field[totalP[turn].getPosition()-1].landOnField(totalP[turn]);
             }
+            
             /* Første betingelse er hvis han ikke slår to ens og ikke er død. 
-             * Anden mulig betingelse er hvis han er i fængsel og har ikke slået med terningerne dvs. han er lige kommet ind i jail.
-             * Trejde mulig betingelse er CheckJail som er true når han lige er kommet ud af fængslet dvs. han skal ikke slå igen.
+             * Anden mulig betingelse er hvis han er i fængsel og har ikke slået med terningerne mens han har været i fængsel dvs. han er lige kommet ind i jail.
+             * Trejde mulig betingelse er CheckJail som er true når han lige har slået sig ud af fængsel dvs. han skal ikke slå igen.
              */
             if((D[0]!=D[1] && !totalP[turn].dead()) || (J.Nthrows(turn)==0 && J.isJailed(turn)) || CheckJail){
                 this.CT();
                 ens=0;
                 CheckJail=false;
             }
+            //Hvis spiller er død
             else if(totalP[turn].dead()){
                 this.DEAD();
                 if(totalP[turn].dead()){
                     ens=0;
                     this.CT();
+                    //Tjekker om en spiller har vundet
                     if(CheckWin()) break;
                 }
             }
+            //Hvis spilleren har slået 2 ens
             else ens++;
             if(TI==this.players-1) firstR=false;
             System.out.println();
@@ -119,9 +136,9 @@ public class Controller{
         if(this.players-this.DeadPlayers==1) return true;
         return false;
     }
-
+    
     private void CheckMoneyStart(Players p,int[] D){
-        int f =p.getPosition()-(D[0]+D[1]);
+        int f=p.getPosition()-(D[0]+D[1]);
         if(f<=1 && p.getPosition()!=1 && firstR==false) p.add(4000);
     }
     
@@ -201,13 +218,13 @@ public class Controller{
             check=true;
             if(i>1){
                 first:
-                    for(int t=1;t<=i-1;t++){
-                        if(totalP[t-1].name().equals(name)){
-                            i--;
-                            check=false;
-                            break first;
-                        }
+                for(int t=1;t<=i-1;t++){
+                    if(totalP[t-1].name().equals(name)){
+                        i--;
+                        check=false;
+                        break first;
                     }
+                }
             }
             if(!check) continue;
             col=GUI.getUserSelection(this.Lang.get("Chose_Color"),this.colors);

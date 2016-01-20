@@ -44,6 +44,8 @@ public class Test {
         else if(TEST==16) dice=new int [][]{{2,2},{2,2},{0,0}};
         //Tester om den resetter luckcards når den når maksimum
         else if(TEST==17) dice=new int [][]{{6,1},{6,1},{6,1},{0,0}};
+        //Tester firstR
+        else if(TEST==18) dice=new int [][]{{2,2},{2,1},{3,1},{0,0}};
         else dice=new int[][]{{0,0}};
         return dice[i];
     }
