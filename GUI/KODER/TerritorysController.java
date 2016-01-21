@@ -29,6 +29,7 @@ public class TerritorysController {
         for(int i=1;i<=40;i++){
             if(FieldHandler.Field[i-1] instanceof Territory){
                 T=(Territory)FieldHandler.Field[i-1];
+                // Sammenligner det feltets farve, med det nuværende felt
                 if(T.getColour()==this.col){
                     if(A==0) A=i;
                     else if(B==0) B=i;
