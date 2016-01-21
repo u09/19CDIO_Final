@@ -37,6 +37,8 @@ public class LuckCard {
         else if (type == "Receive") p.add(value);
         else {
             GUI.removeCar(p.getPosition(), p.name());
+            // n er nr på prøv lykkefelterne som vi selv definere udfra position.
+            // luckFieldNum er der hvor han skal være eller over for at modtage 4000.
             int n;
             if(p.getPosition()==3) n=1;
             else if(p.getPosition()==8) n=2;
@@ -69,7 +71,7 @@ public class LuckCard {
             else GUI.setCar(p.getPosition(),p.name());
         }
     }
-    
+    // Boolean metode til at tjekke om LOF skal køres igen.
     public boolean getLOF(){
         return (type!="Receive" && type!="Pay");
     }
