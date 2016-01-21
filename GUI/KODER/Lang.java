@@ -7,6 +7,12 @@ public class Lang {
     
     public Lang() {}
     
+    /**
+     * Vi har to værdier i en hashMap, værdien til højre associeres med den værdi til venstre.
+     * <key, value>
+     * @param input
+     * @return
+     */
     public Map<String, String> lang(String input) {
         Map<String, String> Danish = new HashMap<String, String>();
         Danish.put("NAME",          "Indtast navn for spiller nummer ");
