@@ -3,11 +3,10 @@ package KODER;
 import FieldTypes.Territory;
 
 public class TerritorysController {
-    private String col;// Definerer en string
-    private int id;// Definerer en int
+    private String col; // Definerer en string
+    private int id; // Definerer en int
     
-    /**
-     * Kontstruktøren med 2 forskellige parametre
+    /** Kontstruktøren med 2 forskellige parametre
      * @param id
      * @param color
      */
@@ -17,8 +16,7 @@ public class TerritorysController {
         this.id=id;
     }
 
-    /**
-     * Metode til at returnere et array med numrene på de ens farvede felter, med enten 2 eller 3 værdier
+    /** Metode til at returnere et array med numrene på de ens farvede felter, med enten 2 eller 3 værdier
      * @return Returnerer et array med felter 1-40
      */
     public int[] GetOtherGrounds() {
@@ -52,7 +50,7 @@ public class TerritorysController {
     
     /** Metode til at få en ejer af et felt
      * @param owner Feltets nummer 0-39
-     * @return
+     * @return int 0-5, hvis ejes, -1 hvis ikke ejes
      */
     public int getOwner(int owner){
         Ownable O=(Ownable)FieldHandler.Field[owner];

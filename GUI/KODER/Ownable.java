@@ -79,7 +79,7 @@ public abstract class Ownable extends Fields{
     /**
      * Den abstrakte metode for at få lejen til hvert Ownable felt. Denne metode specificeres i under hvert felt.
      * @param p Object af Players
-     * @return
+     * @return int rent
      */
     public abstract int getRent(Players p);
 }
