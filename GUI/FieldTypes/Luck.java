@@ -9,10 +9,11 @@ import KODER.Players;
 
 public class Luck extends Fields {
     private final Map<String, String> Lang=new Lang().lang("DA");
-    private static LuckController LuckConObj;
+    private static LuckController LuckConObj; // definere objektet
     
     public Luck(String name){
         super(name);
+        // opretter objekt af LuckController, da vi skaal bruge metoder derfra
         LuckConObj=new LuckController();
     }
     

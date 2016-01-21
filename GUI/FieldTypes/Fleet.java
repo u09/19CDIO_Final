@@ -16,7 +16,9 @@ public class Fleet extends Ownable{
         setRent(p);
         return this.rent;
     }
-    
+    /**Metode for at sætte den korrekte leje afhængig af antal fleets ejet.
+     * @param Players p
+     */
     private void setRent(Players p){
         Ownable O[]={(Ownable) FieldHandler.Field[5],(Ownable) FieldHandler.Field[15],(Ownable) FieldHandler.Field[25],(Ownable) FieldHandler.Field[35]};
         int[] amountp = {0,0,0,0,0,0};// Laver et array med hvor mange fleet felter de forskellige spillere ejer
@@ -28,7 +30,7 @@ public class Fleet extends Ownable{
         else if(n==26) n=2;
         else n=3;
         
-        // Hvis man køber et felt, vil man inde i arrayet få et mere fleet felt, altså "amountp" 
+        // Hvis man køber et felt, vil man inde i arrayet få et fleet felt mere, altså "amountp" inkrementeres.
         if(O[0].getOwner()!=null) amountp[O[0].getOwner().getPlayer()]++;
         if(O[1].getOwner()!=null) amountp[O[1].getOwner().getPlayer()]++;
         if(O[2].getOwner()!=null) amountp[O[2].getOwner().getPlayer()]++;
@@ -36,7 +38,8 @@ public class Fleet extends Ownable{
         
         // Hvis spilleren der lander på det pågældende fleet felt selv ejer det, skal der ikke betales noget
         if(p.getPlayer()==O[n].getOwner().getPlayer()) this.rent=0;
-        else{// Jo flere de ejer, jo højere bliver lejen for at lande der 
+        // Jo flere de ejer, jo højere bliver lejen for at lande der 
+        else{
             if(amountp[O[n].getOwner().getPlayer()]==1) this.rent=500;
             else if(amountp[O[n].getOwner().getPlayer()]==2) this.rent=1000;
             else if(amountp[O[n].getOwner().getPlayer()]==3) this.rent=2000;

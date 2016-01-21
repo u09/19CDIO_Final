@@ -1,6 +1,7 @@
 package FieldTypes;
 
 import KODER.Fields;
+import KODER.Ownable;
 import KODER.Players;
 
 public class Starter extends Fields{
@@ -13,4 +14,5 @@ public class Starter extends Fields{
     public void landOnField(Players player){
         
     }
+    
 }

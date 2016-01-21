@@ -5,9 +5,8 @@ import FieldTypes.Jail;
 
 public abstract class Ownable extends Fields{
     /* Noter til denne klasse:
-     * Protected betyder at variablen eller metoden kun kan tilgås fra den samme klasse eller fra en nedarvet klasse.
+     * Protected betyder at variablen eller metoden kun kan tilgås fra samme pakke, den samme klasse eller fra en nedarvet klasse.
      * super metoden sender variablen name videre til super klassen hvor den bliver brugt i konstruktøren.
-     * 
      */
     // Vi definerer en variabel af typen Players, som kan ses af hele pakken og alle arvede klasser(fra Fields) 
     protected Players owner;
@@ -21,7 +20,7 @@ public abstract class Ownable extends Fields{
      * @param price
      */
     public Ownable(String name,int price){
-        // vi henter "name" fra de forskellige klasser(felttyper), som extend'er ownable, og giver dem videre til superklassen Fields
+        // Vi henter "name" fra de forskellige klasser(felttyper), som extend'er ownable, og giver dem videre til superklassen Fields
         super(name);
         setPrice(price);
     }

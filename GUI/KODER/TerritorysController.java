@@ -25,7 +25,7 @@ public class TerritorysController {
         int B=0;
         int C=0;
         Territory T;
-        // Vi looper igennem alle felter på gameboardet
+        // Vi looper igennem alle felter i Field array og henter numrene på de felter der har samme farve, som det spilleren er landet på.
         for(int i=1;i<=40;i++){
             if(FieldHandler.Field[i-1] instanceof Territory){
                 T=(Territory)FieldHandler.Field[i-1];
@@ -36,14 +36,15 @@ public class TerritorysController {
                 }
             }
         }
-        if(C==0) return new int[]{A,B};// Nogen farver har 2 felter, hvilket skal returneres, hvis ikke det sidste felt med samme farve er defineret
-        else return new int[]{A,B,C}; // Andre farver har 3 felter, hvilket skal returneres, hvis alle 3 er defineret
+        // Nogen farver har 2 felter, hvilket skal returneres, hvis ikke det sidste felt med samme farve er defineret
+        if(C==0) return new int[]{A,B};
+        // Andre farver har 3 felter, hvilket skal returneres, hvis alle 3 er defineret
+        else return new int[]{A,B,C};
     }
-
     public String getColor() {
         return this.col;
     }
-
+    // Bruges ikke
     public int getId() {
         return this.id;
     }

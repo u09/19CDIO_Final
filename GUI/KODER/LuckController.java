@@ -39,11 +39,13 @@ public class LuckController{
         new LuckCard("Receive",Lang.get("PrøvLRec9"), 1000),
         new LuckCard("Receive",Lang.get("PrøvLRec10"), 1000),
     };
-    
+    // Metode til at shuffle hele LuckCards array så de ligger i tilfældig rækkefølge ligesom en rigtig kortbunke.
     public LuckController(){
         Collections.shuffle(Arrays.asList(LuckCards));
     }
-    
+    // Linje 50: Hvis hele bunken er færdig så sættes cardNum til -1.
+    // Linje 52: Hvis getLOF metoden er true på det nuværende kort så skal LOF være true.
+    // Linje 53: Nuværende korts instruks bliver fulgt på nuværende spiller.
     public void getLuckCard(Players p){
         if(LuckCards.length-1==cardNum) cardNum=-1;
         cardNum++;

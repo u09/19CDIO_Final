@@ -9,7 +9,7 @@ import KODER.Players;
 public class Jail extends Fields {
     /* Noter til denne klasse:
      * jailedPlayers bruges til at se om spillerne er fængslet, hvorfor der er 6.
-     * static betyder at variablen ikke ændrer sig når man laver et nyt objekt af den.
+     * static betyder at variablen ikke ændrer sig når man laver et nyt objekt af den. 
      * Nthrows fortæller hvor mange gange hver spiller som sidder i fængsel har kastet.
      */ 
     private static boolean[] jailedPlayers={false,false,false,false,false,false};
@@ -21,14 +21,17 @@ public class Jail extends Fields {
 
     @Override
     public void landOnField(Players p){
-        if(p.getPosition()==11 && jailedPlayers[p.getPlayer()]==false) return;// Man skal ikke ryge i fængsel, hvis man lander på felt 11(på besøg) 
-        if(jailedPlayers[p.getPlayer()]==false){// Hvis man ryger i fængsel ved at slå terninger og komme til felt 31, sætter vi bilen over på felt 11, og sætter jailedPlayers til true
+        // Man skal ikke ryge i fængsel, hvis man lander på felt 11(på besøg)
+        if(p.getPosition()==11 && jailedPlayers[p.getPlayer()]==false) return;
+        // Hvis man ryger i fængsel ved at slå terninger og komme til felt 31, sætter vi bilen over på felt 11, og sætter jailedPlayers til true
+        if(jailedPlayers[p.getPlayer()]==false){
             GUI.removeCar(31,p.name());
             GUI.setCar(11,p.name());
             p.setPosition(11);
             jailedPlayers[p.getPlayer()]=true;
         }
-        else{// Så har man valgmuligheden for, at enten betale 1000kr og komme ud af fængsel, eller kaste terninger
+        // Så har man valgmuligheden for, at enten betale 1000kr og komme ud af fængsel, eller kaste terninger
+        else{
             String b=GUI.getUserButtonPressed(Lang.get("iFængsel"),Lang.get("iFængselB"),Lang.get("iFængselT"));
             if(b==Lang.get("iFængselB")) payJail(p);
             else Nthrows[p.getPlayer()]++;
