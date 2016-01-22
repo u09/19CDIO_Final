@@ -8,7 +8,8 @@ public abstract class Ownable extends Fields{
      * Protected betyder at variablen eller metoden kun kan tilgås fra samme pakke, den samme klasse eller fra en nedarvet klasse.
      * super metoden sender variablen name videre til super klassen hvor den bliver brugt i konstruktøren.
      */
-    // Vi definerer en variabel af typen Players, som kan ses af hele pakken og alle arvede klasser(fra Fields) 
+    // Vi definerer en variabel af typen Players, som kan 
+    // ses af hele pakken og alle arvede klasser(fra Fields) 
     protected Players owner;
     // Definerer ny int variabel
     private int price;
@@ -72,11 +73,11 @@ public abstract class Ownable extends Fields{
                 }
             }
         }
-            
     }
     
     /**
-     * Den abstrakte metode for at få lejen til hvert Ownable felt. Denne metode specificeres i under hvert felt.
+     * Den abstrakte metode for at få lejen til hvert Ownable felt. 
+     * Denne metode specificeres i under hvert felt.
      * @param p Object af Players
      * @return int rent
      */
