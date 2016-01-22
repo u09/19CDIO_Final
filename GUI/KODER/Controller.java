@@ -127,25 +127,37 @@ public class Controller{
             if(TI==this.players-1) firstR=false;
             System.out.println();
         }
-        if(this.TEST!=0) GUI.showMessage(Lang.get("TEST_FAEDIG"));
-        else GUI.showMessage(Lang.get("VUNDET")+totalP[turn-1].name()+"!!!!");
+        if(this.TEST!=0) GUI.showMessage(Lang.get("TEST_FAEDIG"));//Hvis testen er færdig
+        else GUI.showMessage(Lang.get("VUNDET")+totalP[turn-1].name()+"!!!!");//Hvis en spiller har vundet
         GUI.close();
     }
     
     private boolean CheckWin(){
-        if(this.players-this.DeadPlayers==1) return true;
+        if(this.players-this.DeadPlayers==1) return true;//Tjekker om der er 1 levende spiller tilbage
         return false;
     }
     
     private void CheckMoneyStart(Players p,int[] D){
+        //Sætter f til at være spillerens position, minus de to terninger lagt sammen
         int f=p.getPosition()-(D[0]+D[1]);
+        //Hvis f er mindre eller det samme som 1, og spillerens position ikke er det
+        //samme som 1, og variablen firstR er false, skal spilleren have 4000.
+        //firstR bliver false når alle spillere har slået med terningen 1 gang
         if(f<=1 && p.getPosition()!=1 && firstR==false) p.add(4000);
     }
     
+    /**
+     * Flytter spiller til Jail
+     * @param p - Players object af aktuelle spiller
+     */
     private void MoveToJail(Players p){
+        //Fjerner spilleren fra nuværende position
         GUI.removeCar(p.getPosition(),p.name());
+        //Sætter spillerens position til at besøge fængslet i GUI'en
         GUI.setCar(11,p.name());
+        //Sætter spillerens position til at være 31 i systemet
         p.setPosition(31);
+        //Kører landOnField på spilleren
         FieldHandler.Field[p.getPosition()-1].landOnField(p);
     }
     
@@ -153,19 +165,27 @@ public class Controller{
         Ownable O;
         String sell;
         int p=0;
+        //Sætter n til at indeholde alle spillerens grunde
         int[] n=F.getOwn(totalP[turn]);
-        for(int i=1;i<=n.length;i++){
-            O=(Ownable)FieldHandler.Field[n[i-1]-1];
-            p+=O.getPrice()/2;
+        for(int i=1;i<=n.length;i++){//Looper gennem grundene
+            O=(Ownable)FieldHandler.Field[n[i-1]-1];//Kaster til Ownable
+            p+=O.getPrice()/2;//Tilføjer halvdelen af grundens pris ind i p
         }
         
+        //Hvis spillerens pengebeholdning plus p er mindre end 0
         if(totalP[turn].getMoney()+p<0){
+            //Looper igennem alle spillerens grunde
             for(int i=1;i<=n.length;i++){
+                //Kaster field til ownable
                 O=(Ownable)FieldHandler.Field[n[i-1]-1];
+                //Sætter ejeren af feltet til at være null
                 O.setOwner(null);
+                //Fjerner feltets ejer fra GUI'en
                 GUI.removeOwner(n[i-1]);
             }
+            //Fjerner spilleren fra brættet
             GUI.removeAllCars(totalP[turn].name());
+            //Inkrementerer DeadPlayers
             this.DeadPlayers++;
         }
         else{
@@ -174,23 +194,36 @@ public class Controller{
             int id;
             String check="";
             while(true){
-                n=F.getOwn(totalP[turn]);
-                ar=new String[n.length];
-                for(int i=1;i<=n.length;i++){
-                    O=(Ownable)FieldHandler.Field[n[i-1]-1];
+                n=F.getOwn(totalP[turn]);//Sætter n til at være spillerens grunde
+                ar=new String[n.length];//Initialiserer et array med længden af n
+                for(int i=1;i<=n.length;i++){//Looper gennem spillerens grunde
+                    O=(Ownable)FieldHandler.Field[n[i-1]-1];//Kaster til ownable
+                    //Sætter det [i-1]'ende index til at være: Navn (Pris)
                     ar[i-1]=O.getName()+" ("+O.getPrice()/2+")";
                 }
+                //Vælger en grund fra listen i arrayet ar
                 sell=GUI.getUserSelection(Lang.get("SAELGEHVAD"),ar);
+                //Tjekker om det 7'ende-sidste tegn er et mellemrum
                 if(sell.substring(sell.length()-7,sell.length()-6).equals(" "))
+                    //Hvis det er, splitter vi strengen fra det 7'ende-sidste tegn
+                    //og beholder den første del af strengen
                     name=sell.substring(0,sell.length()-7);
+                //Ellers splitter vi ved det sjette-sidste tegn
                 else name=sell.substring(0,sell.length()-6);
+                //Kører en metode der konvereterer et navn til et id (feltnummer)
                 id=F.nameToNum(name);
-                O=(Ownable)FieldHandler.Field[id-1];
-                O.setOwner(null);
-                GUI.removeOwner(id);
+                O=(Ownable)FieldHandler.Field[id-1];//Kaster feltet til et ownable
+                O.setOwner(null);//Sætter ejeren til at være null
+                GUI.removeOwner(id);//Fjerner ejeren af grunden fra GUI'en
+                //Tilføjer halvdelen af prisens grund, til ejeren
                 totalP[turn].add(O.getPrice()/2);
+                //Tjekker om spillerens pengebeholdning er større eller det samme
+                //som 0, og om spilleren har flere grunde til rådighed
                 if(totalP[turn].getMoney()>=0 && n.length>1)
+                    //Hvis det er sandt, spørger den om han vil sælge flere grunde
                     check=GUI.getUserButtonPressed(Lang.get("FLERE"),Lang.get("Y"),Lang.get("N"));
+                //Hvis han ikke har flere grunde til rådighed, eller han ikke gider
+                //at sælge flere grunde, breaker den ud af loopet
                 if(check.equals(Lang.get("N")) || n.length==1) break;
             }
         }
@@ -200,8 +233,12 @@ public class Controller{
      * Skifter spillerens tur. Spinger dead spillere over
      */
     private void CT(){
+        //Tjekker om det er den sidste spillers tur, og sætter turen til at være den
+        //første spillers tur hvis det er true
         if(this.turn==this.players-1) this.turn=0;
+        //Ellers inkrementerer den turen med 1
         else this.turn++;
+        //Tjekker om den nye tur er en død spiller, og kører sigselv hvis den er true
         if(this.totalP[turn].dead()) CT();
     }
     
@@ -212,24 +249,40 @@ public class Controller{
         boolean check=true;
         String name,col,tyype;
         
+        //Looper antallet af spillere
         for(int i=1;i<=this.players;i++){
+            //Check er true hvis det sidst indtastede navn er gyldigt, og ellers er
+            //den false
             if(check) name=GUI.getUserString(Lang.get("NAME")+i);
             else name=GUI.getUserString(Lang.get("NAME2")+i);
             check=true;
+            //Hvis vi allerede har tilføjet 1 spiller
             if(i>1){
                 first:
+                //Looper igennem de navne der allerede er blevet tilføjet
                 for(int t=1;t<=i-1;t++){
+                    //Hvis det indtastede navn er det samme som et andet navn der
+                    //allerede er indtastet
                     if(totalP[t-1].name().equals(name)){
+                        //Dekrementer i, sæt check til false og break det inderste
+                        //for-loop
                         i--;
                         check=false;
                         break first;
                     }
                 }
             }
+            
+            //Hvis check er false, skal loopet ignorere resten af loopet
             if(!check) continue;
+            
+            //Spørger hvilken farve bil spilleren skal have
             col=GUI.getUserSelection(this.Lang.get("Chose_Color"),this.colors);
+            //Spørger hvilken type bil spilleren skal have
             tyype=GUI.getUserSelection(this.Lang.get("Chose_Type"),this.type);
+            //Fjerner den valgte farve fra listen af gyldige farver
             this.colors=removeElement(this.colors,Arrays.asList(this.colors).indexOf(col));
+            //Tilføjer spilleren i totalP-arrayet
             totalP[i-1]=new Players(name,col,tyype,Lang,i-1);
         }
     }
@@ -251,15 +304,19 @@ public class Controller{
      * Sætter sproget for boardet og antal spillere
      */
     private void PreGame(){
-        this.Board.createBoard(this.Lang);
-        if(this.TEST==0)
+        this.Board.createBoard(this.Lang);//Laver boardet med det valgte sprog
+        if(this.TEST==0)//Hvis vi ikke kører en test
         {
+            //Spørger hvor mange spillere der skal være
             this.players=Integer.parseInt(GUI.getUserSelection(this.Lang.get("AS2"),"2","3","4","5","6"));
             this.totalP=new Players[this.players];
+            //Kører AddPlayers
             this.AddPlayers();
         }
+        //Hvis vi kører en test
         else
         {
+            //Initialiserer et array med navn, farve og type bil
             String[][] str={
                 {"Test1",colors[0],type[0]},
                 {"Test2",colors[1],type[0]},
@@ -268,11 +325,13 @@ public class Controller{
                 {"Test5",colors[4],type[0]},
                 {"Test6",colors[5],type[0]}
             };
+            //Sætter players til at være TEST_PLAYERS
             this.players=this.TEST_PLAYERS;
+            //Sætter længden af totalP til at være det players
             this.totalP=new Players[this.players];
-            
+            //Looper antallet af players hvor der bliver sat et objekt af Players()
+            //ind i array-indexene i totalP med navn, farve og type fra str[][]
             for(int i=0;i<=this.players-1;i++) totalP[i]=new Players(str[i][0],str[i][1],str[i][2],Lang,i);
         }
     }
-    
 }
