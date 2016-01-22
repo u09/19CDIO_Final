@@ -2,7 +2,7 @@ package KODER;
 
 public class Bank {
     private int money = 30000;
-    private boolean dead=false;
+    private boolean dead=false ;
     // Konstruktør
     public Bank(){
         
