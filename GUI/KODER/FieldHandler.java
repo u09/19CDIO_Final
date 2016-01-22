@@ -52,18 +52,22 @@ public class FieldHandler{
         new Tax("EkstraordinÃ¦r statsskat: Betal 2000kr",2000),
         new Territory(40,"RÃ¥dhuspladsen","Magenta",8000,1000)
     };
-    // looper igennem alle felter
+    /**
+     * Metode for at returnere array med numrene pÃ¥ felter som spiller ejer
+     * @param Players p
+     * @return int[] ar
+     */
     public int[] getOwn(Players p){
         Ownable O;
         int t=0;
         for(int i=1;i<=40;i++){
             if(Field[i-1] instanceof Ownable){
                 O=(Ownable)Field[i-1];
-                // hvis feltet ejes af pågældende spiller, inkrementeres t.
+                // hvis feltet ejes af pï¿½gï¿½ldende spiller, inkrementeres t.
                 if(O.getOwner()!=null && O.getOwner().getPlayer()==p.getPlayer()) t++;
             }
         }
-        // opretter et array med længden af felter pågældende spiller ejer.
+        // opretter et array med lï¿½ngden t af felter pï¿½gï¿½ldende spiller ejer.
         int[] ar=new int[t];
         t=-1;
         for(int i=1;i<=40;i++){
@@ -71,7 +75,7 @@ public class FieldHandler{
                 O=(Ownable)Field[i-1];
                 if(O.getOwner()!=null && O.getOwner().getPlayer()==p.getPlayer()){
                     t++;
-                    // ar[t] retunere felt nr der ejes.
+                    // ar[t] retunerer array med numrene pÃ¥ felt numre der ejes.
                     ar[t]=i;
                 }
             }

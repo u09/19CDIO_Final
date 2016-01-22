@@ -34,6 +34,7 @@ public class Controller{
         if(this.TEST==12) test.TestSell(totalP[turn]);
         else if(this.TEST==14) test.TestGround(totalP[0]);
         else if(this.TEST==16) test.Test16(totalP);
+        else if(this.TEST==19) test.printOwn(totalP[0]);
     }
   
     /**
@@ -229,13 +230,14 @@ public class Controller{
             if(!check) continue;
             col=GUI.getUserSelection(this.Lang.get("Chose_Color"),this.colors);
             tyype=GUI.getUserSelection(this.Lang.get("Chose_Type"),this.type);
+            // Valgte farver fjernes fra colours array løbende
             this.colors=removeElement(this.colors,Arrays.asList(this.colors).indexOf(col));
             totalP[i-1]=new Players(name,col,tyype,Lang,i-1);
         }
     }
     
     /**
-     * Fjerner element fra array
+     * Generel metode for at fjerne element fra array
      * @param original = Array'et der skal fjernes fra
      * @param element = Hvilket element der skal fjernes
      * @return Returnerer et array med det fjernet element

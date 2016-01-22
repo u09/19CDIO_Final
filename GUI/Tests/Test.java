@@ -47,6 +47,7 @@ public class Test {
         else if(TEST==17) dice=new int [][]{{6,1},{6,1},{6,1},{0,0}};
         //Tester firstR
         else if(TEST==18) dice=new int [][]{{2,2},{2,1},{3,1},{0,0}};
+        else if(TEST==19) dice=new int [][]{{2,2},{2,1},{0,0}};
         else dice=new int[][]{{0,0}};
         return dice[i];
     }
@@ -77,5 +78,21 @@ public class Test {
     public void Test16(Players[] p){
         p[0].remove(30000);
         p[1].remove(30000);
+    }
+    
+    public void testSetOwner(Players p){
+        Ownable O;
+        O=(Ownable)FieldHandler.Field[26-1];
+        O.setOwner(p);
+        GUI.setOwner(26, p.name());
+    }
+    
+    public void printOwn(Players p){
+        FieldHandler hyhy = new FieldHandler();
+        TestGround(p);
+        int[] hy = hyhy.getOwn(p);
+        for(int i=1; i<=hy.length; i++){
+            System.out.println(hy[i-1]);
+        }
     }
 }
